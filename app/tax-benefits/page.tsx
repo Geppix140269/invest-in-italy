@@ -95,15 +95,24 @@ export default function TaxBenefitsPage() {
                 </div>
                 <CardTitle className="font-display text-2xl">Flat Tax Regime</CardTitle>
                 <CardDescription className="text-base">
-                  €100,000 per year flat tax on all foreign income
+                  €200,000 per year flat tax on all foreign income (€300,000 from 2025-2026)
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="p-6 bg-accent/5 rounded-lg border-2 border-accent/20">
-                  <div className="text-3xl font-display font-bold text-accent mb-2">€100,000/year</div>
+                  <div className="text-3xl font-display font-bold text-accent mb-2">€200,000/year</div>
                   <p className="text-sm text-muted-foreground">
-                    Fixed annual tax on all foreign-sourced income, regardless of amount
+                    Fixed annual tax on foreign-sourced income (rising to €300,000 in 2025-2026)
                   </p>
+                </div>
+
+                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <h4 className="font-semibold text-blue-900 text-sm mb-2">Eligibility Requirements:</h4>
+                  <ul className="space-y-1 text-xs text-blue-800">
+                    <li>• Must not have been an Italian tax resident for at least 9 of the previous 10 years</li>
+                    <li>• Only applies to foreign-sourced income (Italian income taxed normally)</li>
+                    <li>• Family members can join at €25,000 each</li>
+                  </ul>
                 </div>
 
                 <div>
@@ -244,20 +253,20 @@ export default function TaxBenefitsPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Superbonus 110% */}
+            {/* Renovation Tax Credits */}
             <Card className="hover:shadow-lg transition-all">
               <CardHeader>
                 <Home className="h-10 w-10 text-accent mb-4" />
-                <CardTitle className="font-display text-xl">Superbonus 110%</CardTitle>
+                <CardTitle className="font-display text-xl">Home Renovation Tax Credits</CardTitle>
                 <CardDescription>
-                  Get 110% of renovation costs back as tax credit
+                  Up to 50% of renovation costs as tax credit (2025 rates)
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="mb-4 p-4 bg-accent/5 rounded-lg border border-accent/20">
-                  <div className="text-2xl font-display font-bold text-accent mb-1">110% Credit</div>
+                  <div className="text-2xl font-display font-bold text-accent mb-1">50% Credit</div>
                   <p className="text-xs text-muted-foreground">
-                    More than your investment returned
+                    For main home renovations (36% for second homes)
                   </p>
                 </div>
                 <ul className="space-y-2 text-sm mb-4">
@@ -275,12 +284,14 @@ export default function TaxBenefitsPage() {
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span>Credit can be sold or transferred</span>
+                    <span>Deduction spread over 10 years</span>
                   </li>
                 </ul>
-                <p className="text-xs text-muted-foreground italic">
-                  *Subject to specific requirements and property types. Consult for latest rates.
-                </p>
+                <div className="p-3 bg-amber-50 rounded-lg border border-amber-200">
+                  <p className="text-xs text-amber-800">
+                    <strong>Note:</strong> The previous 110% Superbonus has been reduced to 70% for most cases in 2025. Specific eligibility requirements apply. Always verify current rates.
+                  </p>
+                </div>
               </CardContent>
             </Card>
 
@@ -597,6 +608,32 @@ export default function TaxBenefitsPage() {
         </div>
       </section>
 
+      {/* Important Disclaimer */}
+      <section className="section-padding bg-secondary/20 border-y border-border">
+        <div className="container-elegant max-w-4xl">
+          <div className="p-6 bg-amber-50 rounded-lg border-2 border-amber-300">
+            <h3 className="font-display text-lg font-semibold text-amber-900 mb-4">Important Legal Disclaimer</h3>
+            <div className="space-y-3 text-sm text-amber-800">
+              <p>
+                <strong>Rates Current as of 2025:</strong> All tax rates, incentives, and requirements listed on this page reflect Italian tax law as of 2025 and are subject to change. The flat tax regime increased from €100,000 to €200,000 in recent years and is rising to €300,000 for 2025-2026.
+              </p>
+              <p>
+                <strong>Eligibility Requirements:</strong> Most tax incentives have strict eligibility requirements. The flat tax regime, for example, is only available to individuals who have not been Italian tax residents for at least 9 of the previous 10 years. Not all investors will qualify for all programs.
+              </p>
+              <p>
+                <strong>Individual Circumstances Vary:</strong> Tax savings depend on your specific financial situation, source of income, country of origin, and tax treaties between Italy and your home country. Actual benefits may differ significantly from examples shown.
+              </p>
+              <p>
+                <strong>Professional Advice Required:</strong> This information is for educational purposes only and does not constitute tax or legal advice. Always consult with qualified Italian tax professionals and legal advisors before making any investment or relocation decisions.
+              </p>
+              <p>
+                <strong>Verification Recommended:</strong> Tax laws change frequently. We recommend verifying all information with official Italian government sources (Agenzia delle Entrate) or licensed tax professionals before proceeding.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-border bg-secondary/10 py-8">
         <div className="container-elegant text-center">
@@ -605,11 +642,10 @@ export default function TaxBenefitsPage() {
             <span className="font-display text-xl font-semibold">Invest in Italy</span>
           </Link>
           <p className="text-sm text-muted-foreground">
-            &copy; 2024 Invest in Italy. All rights reserved.
+            &copy; 2025 Invest in Italy. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground mt-2">
-            This information is for general guidance only. Tax situations vary by individual circumstances.
-            Consult with qualified tax professionals for advice specific to your situation.
+            Information updated for 2025 tax year. Consult professionals for current rates and eligibility.
           </p>
         </div>
       </footer>
