@@ -32,17 +32,17 @@ export default function Home() {
             </Link>
 
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="#services" className="text-sm font-medium hover:text-accent transition-colors">
+              <Link href="/services" className="text-sm font-medium hover:text-accent transition-colors">
                 Services
+              </Link>
+              <Link href="/tax-benefits" className="text-sm font-medium hover:text-accent transition-colors">
+                Tax Benefits
               </Link>
               <Link href="#about" className="text-sm font-medium hover:text-accent transition-colors">
                 About
               </Link>
               <Link href="#insights" className="text-sm font-medium hover:text-accent transition-colors">
                 Insights
-              </Link>
-              <Link href="#tools" className="text-sm font-medium hover:text-accent transition-colors">
-                Tools
               </Link>
               <Link href="#contact">
                 <Button className="bg-primary hover:bg-primary/90">
@@ -160,9 +160,11 @@ export default function Home() {
                     <span className="text-sm">Legal & tax optimization</span>
                   </li>
                 </ul>
-                <Button className="w-full mt-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                  Learn More
-                </Button>
+                <Link href="/hospitality-investment">
+                  <Button className="w-full mt-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                    View Hospitality Opportunities
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -196,9 +198,11 @@ export default function Home() {
                     <span className="text-sm">Government incentives & funding programs</span>
                   </li>
                 </ul>
-                <Button className="w-full mt-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                  Learn More
-                </Button>
+                <Link href="/services">
+                  <Button className="w-full mt-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                    Learn More
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -232,9 +236,11 @@ export default function Home() {
                     <span className="text-sm">Performance improvement programs</span>
                   </li>
                 </ul>
-                <Button className="w-full mt-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                  Learn More
-                </Button>
+                <Link href="/services">
+                  <Button className="w-full mt-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                    Learn More
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -620,17 +626,18 @@ export default function Home() {
             <div>
               <h3 className="font-semibold mb-4">Services</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="#services" className="hover:text-accent transition-colors">Real Estate</Link></li>
-                <li><Link href="#services" className="hover:text-accent transition-colors">Business Development</Link></li>
-                <li><Link href="#services" className="hover:text-accent transition-colors">Management Consulting</Link></li>
+                <li><Link href="/services" className="hover:text-accent transition-colors">All Services</Link></li>
+                <li><Link href="/hospitality-investment" className="hover:text-accent transition-colors">Hospitality Investment</Link></li>
+                <li><Link href="/services#business" className="hover:text-accent transition-colors">Business Development</Link></li>
+                <li><Link href="/services#management" className="hover:text-accent transition-colors">Management Consulting</Link></li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-semibold mb-4">Resources</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><Link href="/tax-benefits" className="hover:text-accent transition-colors">Tax Benefits</Link></li>
                 <li><Link href="#insights" className="hover:text-accent transition-colors">Insights</Link></li>
-                <li><Link href="#tools" className="hover:text-accent transition-colors">Investment Tools</Link></li>
                 <li><Link href="#about" className="hover:text-accent transition-colors">About</Link></li>
                 <li><Link href="#contact" className="hover:text-accent transition-colors">Contact</Link></li>
               </ul>
