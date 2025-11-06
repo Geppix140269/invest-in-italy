@@ -48,9 +48,14 @@ export default function TaxBenefitsPage() {
       <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-accent/5 to-background">
         <div className="container-elegant">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-accent/10 text-accent hover:bg-accent/20 border-accent/20">
-              Tax Advantages
-            </Badge>
+            <div className="flex gap-3 justify-center mb-6">
+              <Badge className="bg-accent/10 text-accent hover:bg-accent/20 border-accent/20">
+                Tax Advantages
+              </Badge>
+              <Badge className="bg-green-100 text-green-800 border-green-300">
+                Updated January 2025
+              </Badge>
+            </div>
             <h1 className="heading-display mb-6">
               Italy&apos;s Exceptional Tax Benefits for Foreign Investors
             </h1>

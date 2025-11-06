@@ -265,7 +265,7 @@ export default function ServicesPage() {
                 <Sparkles className="h-10 w-10 text-accent mb-4" />
                 <CardTitle className="font-display text-xl">Renovation Projects</CardTitle>
                 <CardDescription>
-                  Historic properties with 110% Superbonus tax incentives
+                  Historic properties with renovation tax incentives (up to 50% for 2025)
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -401,7 +401,7 @@ export default function ServicesPage() {
             </h2>
             <p className="text-lg leading-relaxed opacity-90 mb-8 max-w-2xl mx-auto">
               Italy offers some of Europe&apos;s most attractive tax incentives for foreign investors,
-              including flat tax regimes, renovation tax credits up to 110%, and special programs
+              including special flat tax regimes (€200,000-€300,000), renovation tax credits up to 50%, and programs
               for new residents.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
