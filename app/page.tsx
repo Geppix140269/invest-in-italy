@@ -253,47 +253,54 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20 border-accent/20">
-                Your Trusted Advisor
+                Your Trusted Advisory Team
               </Badge>
               <h2 className="heading-section mb-6">
-                Experience That Transforms Opportunities
+                Comprehensive Expertise Across the Entire Value Chain
               </h2>
               <p className="prose-elegant mb-6">
-                With decades of international executive experience and deep roots in
-                the Italian business ecosystem, I bring unparalleled expertise to your
-                investment journey.
+                We are a team of international executives with decades of combined experience
+                navigating every sector of the business value chain—from startups to multinational
+                corporations. Our deep understanding of the Italian business ecosystem, combined
+                with proven expertise in funding, financing, and scaling ventures, delivers
+                unparalleled value to your investment journey.
               </p>
               <p className="prose-elegant mb-8">
-                My unique position as a member of both the Italian Association of Small
-                and Medium Enterprises and the International Trade Council (ITC) provides
-                exclusive access to opportunities and insights unavailable elsewhere.
+                Our team&apos;s unique positioning within the Italian Association of Small and
+                Medium Enterprises and the International Trade Council (ITC) provides exclusive
+                access to opportunities and insights unavailable elsewhere. We excel at building
+                and maintaining steady, profitable revenue streams while navigating the complexities
+                of international business.
               </p>
 
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Award className="h-6 w-6 text-accent mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold mb-1">International Executive Background</h3>
+                    <h3 className="font-semibold mb-1">End-to-End Value Chain Expertise</h3>
                     <p className="text-sm text-muted-foreground">
-                      20+ years leading multinational teams across Europe, Asia, and the Americas
+                      From startup launch through scale-up to MNC operations—funding, financing,
+                      growth strategies, and profitability optimization
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Award className="h-6 w-6 text-accent mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold mb-1">Italian SME Association Member</h3>
+                    <h3 className="font-semibold mb-1">Global Executive Leadership</h3>
                     <p className="text-sm text-muted-foreground">
-                      Direct connections to Italy&apos;s thriving small and medium enterprise sector
+                      Collective experience leading multinational teams across Europe, Asia, Americas,
+                      and Middle East in diverse industries
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Award className="h-6 w-6 text-accent mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold mb-1">International Trade Council</h3>
+                    <h3 className="font-semibold mb-1">Exclusive Network Access</h3>
                     <p className="text-sm text-muted-foreground">
-                      Global network facilitating cross-border investments and partnerships
+                      Italian SME Association and International Trade Council membership providing
+                      direct connections to decision-makers, deal flow, and off-market opportunities
                     </p>
                   </div>
                 </div>
@@ -516,7 +523,7 @@ export default function Home() {
                 Start Your Investment Journey
               </h2>
               <p className="prose-elegant mb-8">
-                Whether you&apos;re exploring opportunities or ready to invest, I&apos;m here
+                Whether you&apos;re exploring opportunities or ready to invest, our team is here
                 to provide personalized guidance tailored to your goals.
               </p>
 
@@ -549,7 +556,7 @@ export default function Home() {
               <CardHeader>
                 <CardTitle className="font-display text-2xl">Request a Consultation</CardTitle>
                 <CardDescription>
-                  Fill out the form below and I&apos;ll get back to you promptly.
+                  Fill out the form below and we&apos;ll get back to you promptly.
                 </CardDescription>
               </CardHeader>
               <CardContent>

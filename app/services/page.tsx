@@ -339,7 +339,7 @@ export default function ServicesPage() {
                 <div className="mt-6 p-4 bg-accent/5 rounded-lg border border-accent/20">
                   <p className="text-sm font-semibold mb-1">Exclusive Access</p>
                   <p className="text-xs text-muted-foreground">
-                    As a member of the Italian SME Association, I provide direct access to
+                    Through our membership in the Italian SME Association, we provide direct access to
                     off-market opportunities not available through traditional channels.
                   </p>
                 </div>
