@@ -51,10 +51,10 @@ export default function HospitalityInvestmentPage() {
               Hospitality Real Estate
             </Badge>
             <h1 className="heading-display mb-6">
-              Italy's Booming Hospitality Investment Market
+              Italy&apos;s Booming Hospitality Investment Market
             </h1>
             <p className="prose-elegant max-w-2xl mx-auto mb-8">
-              Capitalize on record tourism numbers and strong yields in one of the world's
+              Capitalize on record tourism numbers and strong yields in one of the world&apos;s
               most desirable destinations. From boutique hotels to luxury vacation rentals,
               discover opportunities that combine lifestyle with exceptional returns.
             </p>
@@ -395,7 +395,7 @@ export default function HospitalityInvestmentPage() {
                 <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
                   <h4 className="font-semibold mb-2 text-blue-900">Market Trend:</h4>
                   <p className="text-sm text-blue-800">
-                    Global wellness tourism growing at 21% annually. Italy's wellness market
+                    Global wellness tourism growing at 21% annually. Italy&apos;s wellness market
                     reached €15B in 2023, with strong international demand.
                   </p>
                 </div>

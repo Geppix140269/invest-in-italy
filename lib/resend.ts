@@ -64,7 +64,7 @@ export const sendContactEmail = async (data: {
       to: process.env.EMAIL_TO!,
       subject: `New Investment Inquiry - ${data.interest}`,
       html: emailHtml,
-      reply_to: data.email,
+      replyTo: data.email,
     });
 
     return { success: true, data: result };

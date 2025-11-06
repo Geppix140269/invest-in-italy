@@ -4,9 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import {
   Globe,
-  TrendingDown,
   Home,
-  Plane,
   Shield,
   Calculator,
   FileText,
@@ -54,10 +52,10 @@ export default function TaxBenefitsPage() {
               Tax Advantages
             </Badge>
             <h1 className="heading-display mb-6">
-              Italy's Exceptional Tax Benefits for Foreign Investors
+              Italy&apos;s Exceptional Tax Benefits for Foreign Investors
             </h1>
             <p className="prose-elegant max-w-2xl mx-auto mb-8">
-              Discover why Italy has become one of Europe's most tax-efficient destinations
+              Discover why Italy has become one of Europe&apos;s most tax-efficient destinations
               for international investors and high-net-worth individuals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -176,7 +174,7 @@ export default function TaxBenefitsPage() {
                 <div className="p-6 bg-green-50 rounded-lg border-2 border-green-200">
                   <div className="text-3xl font-display font-bold text-green-700 mb-2">7% Tax Rate</div>
                   <p className="text-sm text-green-800">
-                    On all foreign-sourced income - one of Europe's lowest rates
+                    On all foreign-sourced income - one of Europe&apos;s lowest rates
                   </p>
                 </div>
 
@@ -445,7 +443,7 @@ export default function TaxBenefitsPage() {
               <Calculator className="h-12 w-12 text-accent mx-auto mb-6" />
               <h2 className="heading-section mb-4">Calculate Your Tax Savings</h2>
               <p className="text-lg leading-relaxed opacity-90">
-                See how much you could save with Italy's flat tax regime
+                See how much you could save with Italy&apos;s flat tax regime
               </p>
             </div>
 
@@ -580,7 +578,7 @@ export default function TaxBenefitsPage() {
             <h2 className="heading-section mb-6">Ready to Optimize Your Tax Situation?</h2>
             <p className="prose-elegant mb-8">
               Schedule a complimentary consultation to discover how much you could save
-              with Italy's exceptional tax benefits.
+              with Italy&apos;s exceptional tax benefits.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/#contact">

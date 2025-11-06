@@ -23,7 +23,7 @@ export type Lead = {
   message: string;
   status: 'new' | 'contacted' | 'qualified' | 'converted' | 'closed';
   source: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 };
 
 // Database types for newsletter subscribers

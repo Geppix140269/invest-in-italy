@@ -69,7 +69,7 @@ export default function ServicesPage() {
           <div className="max-w-3xl mb-12">
             <h2 className="heading-section mb-4">Real Estate Investment Services</h2>
             <p className="prose-elegant">
-              Access Italy's most prestigious properties and emerging opportunities with
+              Access Italy&apos;s most prestigious properties and emerging opportunities with
               expert guidance every step of the way.
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function ServicesPage() {
                 <Home className="h-10 w-10 text-accent mb-4" />
                 <CardTitle className="font-display text-xl">Luxury Residential</CardTitle>
                 <CardDescription>
-                  Premium villas, apartments, and estates in Italy's most sought-after locations
+                  Premium villas, apartments, and estates in Italy&apos;s most sought-after locations
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -157,7 +157,7 @@ export default function ServicesPage() {
                 <Palmtree className="h-10 w-10 text-accent mb-4" />
                 <CardTitle className="font-display text-xl">Wellness & Lifestyle</CardTitle>
                 <CardDescription>
-                  Emerging opportunities in Italy's booming wellness tourism sector
+                  Emerging opportunities in Italy&apos;s booming wellness tourism sector
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -314,7 +314,7 @@ export default function ServicesPage() {
                 <TrendingUp className="h-10 w-10 text-accent mb-4" />
                 <CardTitle className="font-display text-2xl">SME Acquisitions</CardTitle>
                 <CardDescription className="text-base">
-                  Access Italy's thriving small and medium enterprise sector
+                  Access Italy&apos;s thriving small and medium enterprise sector
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -400,7 +400,7 @@ export default function ServicesPage() {
               Maximize Returns with Italian Tax Benefits
             </h2>
             <p className="text-lg leading-relaxed opacity-90 mb-8 max-w-2xl mx-auto">
-              Italy offers some of Europe's most attractive tax incentives for foreign investors,
+              Italy offers some of Europe&apos;s most attractive tax incentives for foreign investors,
               including flat tax regimes, renovation tax credits up to 110%, and special programs
               for new residents.
             </p>

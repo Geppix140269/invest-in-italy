@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useChat } from '@ai-sdk/react';
+import { DefaultChatTransport } from 'ai';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -9,18 +10,30 @@ import { X, Send, MessageCircle, Sparkles } from 'lucide-react';
 
 export function SofiaChat() {
   const [isOpen, setIsOpen] = useState(false);
+  const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: '/api/chat',
-    initialMessages: [
-      {
-        id: 'welcome',
-        role: 'assistant',
-        content: "Hello! I'm Sofia, your Italian investment advisor. I'm here to help you discover exceptional opportunities in Italy—from luxury real estate and hospitality ventures to business acquisitions and tax optimization strategies. What interests you today?",
-      },
-    ],
+  const { messages, sendMessage, status, setMessages } = useChat({
+    transport: new DefaultChatTransport({
+      api: '/api/chat',
+    }),
   });
+
+  // Add welcome message on mount
+  useEffect(() => {
+    if (messages.length === 0) {
+      setMessages([
+        {
+          id: 'welcome',
+          role: 'assistant',
+          parts: [{
+            type: 'text',
+            text: "Hello! I'm Sofia, your Italian investment advisor. I'm here to help you discover exceptional opportunities in Italy—from luxury real estate and hospitality ventures to business acquisitions and tax optimization strategies. What interests you today?",
+          }],
+        },
+      ]);
+    }
+  }, [messages.length, setMessages]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -104,12 +117,14 @@ export function SofiaChat() {
                     </div>
                   )}
                   <p className="text-sm leading-relaxed whitespace-pre-wrap">
-                    {message.content}
+                    {message.parts.map((part) =>
+                      part.type === 'text' ? part.text : null
+                    ).join('')}
                   </p>
                 </div>
               </div>
             ))}
-            {isLoading && (
+            {status === 'streaming' && (
               <div className="flex justify-start">
                 <div className="max-w-[85%] rounded-2xl rounded-bl-sm px-4 py-3 bg-card border border-border">
                   <div className="flex items-center gap-2">
@@ -127,19 +142,25 @@ export function SofiaChat() {
           </div>
 
           {/* Input */}
-          <form onSubmit={handleSubmit} className="p-4 border-t border-border bg-background">
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            if (input.trim() && status === 'ready') {
+              sendMessage({ text: input });
+              setInput('');
+            }
+          }} className="p-4 border-t border-border bg-background">
             <div className="flex gap-2">
               <Input
                 value={input}
-                onChange={handleInputChange}
+                onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about Italian investments..."
-                disabled={isLoading}
+                disabled={status !== 'ready'}
                 className="flex-1"
                 autoComplete="off"
               />
               <Button
                 type="submit"
-                disabled={isLoading || !input.trim()}
+                disabled={status !== 'ready' || !input.trim()}
                 size="icon"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground"
               >
@@ -164,9 +185,12 @@ export function SofiaChat() {
                 <button
                   key={suggestion}
                   onClick={() => {
-                    handleInputChange({ target: { value: suggestion } } as any);
+                    if (status === 'ready') {
+                      sendMessage({ text: suggestion });
+                    }
                   }}
-                  className="text-xs px-3 py-1.5 rounded-full bg-accent/10 text-accent hover:bg-accent/20 transition-colors"
+                  disabled={status !== 'ready'}
+                  className="text-xs px-3 py-1.5 rounded-full bg-accent/10 text-accent hover:bg-accent/20 transition-colors disabled:opacity-50"
                 >
                   {suggestion}
                 </button>
