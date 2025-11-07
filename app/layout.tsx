@@ -17,6 +17,38 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Invest in Italy - Expert Italian Investment Advisory",
   description: "Premium investment advisory services for foreign investors. Expert guidance on Italian real estate, business acquisitions, tax benefits, and hospitality investments from international executives.",
+  icons: {
+    icon: [
+      { url: '/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicons/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/favicons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://invest-in-italy.com',
+    siteName: 'Invest in Italy',
+    title: 'Invest in Italy - Expert Italian Investment Advisory',
+    description: 'Premium investment advisory services for foreign investors. Expert guidance on Italian real estate, business acquisitions, tax benefits, and hospitality investments.',
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Invest in Italy',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Invest in Italy - Expert Italian Investment Advisory',
+    description: 'Premium investment advisory services for foreign investors.',
+    images: ['/images/og-image.png'],
+  },
 };
 
 export default function RootLayout({

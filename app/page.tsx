@@ -1,22 +1,22 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { Logo } from "@/components/logo";
+import { ContactForm } from "@/components/contact-form";
+import { NewsletterForm } from "@/components/newsletter-form";
 import {
   Building2,
   TrendingUp,
   Users,
-  Globe,
   Award,
   Calculator,
   FileText,
   Mail,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Globe
 } from "lucide-react";
 
 export default function Home() {
@@ -26,10 +26,7 @@ export default function Home() {
       <header className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
         <nav className="container-elegant py-4 md:py-6">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <Globe className="h-6 w-6 text-accent" />
-              <span className="font-display text-xl font-semibold">Invest in Italy</span>
-            </Link>
+            <Logo width={50} height={50} />
 
             <div className="hidden md:flex items-center space-x-8">
               <Link href="/services" className="text-sm font-medium hover:text-accent transition-colors">
@@ -38,11 +35,11 @@ export default function Home() {
               <Link href="/tax-benefits" className="text-sm font-medium hover:text-accent transition-colors">
                 Tax Benefits
               </Link>
+              <Link href="/blog" className="text-sm font-medium hover:text-accent transition-colors">
+                Blog
+              </Link>
               <Link href="#about" className="text-sm font-medium hover:text-accent transition-colors">
                 About
-              </Link>
-              <Link href="#insights" className="text-sm font-medium hover:text-accent transition-colors">
-                Insights
               </Link>
               <Link href="#contact">
                 <Button className="bg-primary hover:bg-primary/90">
@@ -493,20 +490,7 @@ export default function Home() {
               directly to your inbox.
             </p>
 
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1"
-              />
-              <Button type="submit" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                Subscribe
-              </Button>
-            </form>
-
-            <p className="text-xs text-muted-foreground mt-4">
-              We respect your privacy. Unsubscribe at any time.
-            </p>
+            <NewsletterForm />
           </div>
         </div>
       </section>
@@ -552,64 +536,7 @@ export default function Home() {
               </div>
             </div>
 
-            <Card className="border-2 border-accent/20">
-              <CardHeader>
-                <CardTitle className="font-display text-2xl">Request a Consultation</CardTitle>
-                <CardDescription>
-                  Fill out the form below and we&apos;ll get back to you promptly.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
-                      <Input id="firstName" placeholder="John" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Doe" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@example.com" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone (Optional)</Label>
-                    <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="interest">Area of Interest</Label>
-                    <select
-                      id="interest"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      <option>Real Estate Investment</option>
-                      <option>Business Development</option>
-                      <option>Management Consulting</option>
-                      <option>General Inquiry</option>
-                    </select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell me about your investment goals and timeline..."
-                      rows={5}
-                    />
-                  </div>
-
-                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+            <ContactForm />
           </div>
         </div>
       </section>
