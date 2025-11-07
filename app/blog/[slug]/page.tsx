@@ -183,7 +183,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   About {post.author.name}
                 </h3>
                 <div className="text-muted-foreground">
-                  <PortableText value={post.author.bio} />
+                  <PortableText value={post.author.bio as any} />
                 </div>
               </div>
             </div>
