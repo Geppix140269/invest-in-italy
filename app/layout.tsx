@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   description: "Premium investment advisory services for foreign investors. Expert guidance on Italian real estate, business acquisitions, tax benefits, and hospitality investments from international executives.",
   icons: {
     icon: [
-      { url: '/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicons/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicons/favicon-16x16.svg', sizes: '16x16', type: 'image/svg+xml' },
+      { url: '/favicons/favicon-32x32.svg', sizes: '32x32', type: 'image/svg+xml' },
+      { url: '/favicons/favicon-96x96.svg', sizes: '96x96', type: 'image/svg+xml' },
     ],
     apple: [
-      { url: '/favicons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/favicons/apple-touch-icon.svg', sizes: '180x180', type: 'image/svg+xml' },
     ],
   },
   openGraph: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: 'Premium investment advisory services for foreign investors. Expert guidance on Italian real estate, business acquisitions, tax benefits, and hospitality investments.',
     images: [
       {
-        url: '/images/og-image.png',
+        url: '/images/og-image.svg',
         width: 1200,
         height: 630,
         alt: 'Invest in Italy',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Invest in Italy - Expert Italian Investment Advisory',
     description: 'Premium investment advisory services for foreign investors.',
-    images: ['/images/og-image.png'],
+    images: ['/images/og-image.svg'],
   },
 };
 

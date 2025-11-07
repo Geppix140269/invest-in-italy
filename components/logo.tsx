@@ -20,7 +20,7 @@ export function Logo({
   return (
     <Link href="/" className={cn("flex items-center gap-3", className)}>
       <Image
-        src="/images/logo.png"
+        src="/images/logo.svg"
         alt="Invest in Italy"
         width={width}
         height={height}

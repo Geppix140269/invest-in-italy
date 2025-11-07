@@ -1,0 +1,12 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="#003366" stroke="#DAA520" stroke-width="3"/>
+
+  <!-- Italian Flag Colors Stripes -->
+  <rect x="70" y="60" width="15" height="80" fill="#009246" rx="2"/>
+  <rect x="92.5" y="60" width="15" height="80" fill="#FFFFFF" rx="2"/>
+  <rect x="115" y="60" width="15" height="80" fill="#CE2B37" rx="2"/>
+
+  <!-- Letter 'I' for Italy/Invest -->
+  <text x="100" y="170" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#DAA520" text-anchor="middle">I</text>
+</svg>
