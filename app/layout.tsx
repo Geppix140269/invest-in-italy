@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-// Temporarily disabled for production build - AI SDK compatibility issue
-// import { SofiaChat } from "@/components/sofia-chat";
+
+import { SofiaChat } from "@/components/sofia-chat";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -63,8 +63,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        {/* Temporarily disabled for production build - AI SDK compatibility issue */}
-        {/* <SofiaChat /> */}
+        <SofiaChat />
       </body>
     </html>
   );
