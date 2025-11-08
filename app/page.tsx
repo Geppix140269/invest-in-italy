@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { Navigation } from "@/components/navigation";
 import { Logo } from "@/components/logo";
 import { ContactForm } from "@/components/contact-form";
 import { NewsletterForm } from "@/components/newsletter-form";
@@ -18,7 +19,6 @@ import {
   Mail,
   ArrowRight,
   CheckCircle2,
-  Globe,
   Sparkles,
   Star
 } from "lucide-react";
@@ -83,49 +83,7 @@ export default function Home() {
       </div>
 
       {/* Header/Navigation - Glassmorphism */}
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-0 w-full glass border-b border-white/20 z-50"
-      >
-        <nav className="container-elegant py-4 md:py-6">
-          <div className="flex items-center justify-between">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <Logo width={50} height={50} />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="hidden md:flex items-center space-x-8"
-            >
-              <Link href="/services" className="text-sm font-medium hover:text-accent transition-all hover:scale-105">
-                Services
-              </Link>
-              <Link href="/tax-benefits" className="text-sm font-medium hover:text-accent transition-all hover:scale-105">
-                Tax Benefits
-              </Link>
-              <Link href="/blog" className="text-sm font-medium hover:text-accent transition-all hover:scale-105">
-                Blog
-              </Link>
-              <Link href="#about" className="text-sm font-medium hover:text-accent transition-all hover:scale-105">
-                About
-              </Link>
-              <Link href="#contact">
-                <Button className="bg-primary hover:bg-primary/90 glow transition-all hover:scale-105">
-                  Get Started
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
-        </nav>
-      </motion.header>
+      <Navigation variant="glass" />
 
       {/* Hero Section - Enhanced with gradients and animations */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 gradient-bg relative">
@@ -664,10 +622,9 @@ export default function Home() {
         <div className="container-elegant py-12">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="md:col-span-2">
-              <Link href="/" className="flex items-center space-x-2 mb-4">
-                <Globe className="h-6 w-6 text-accent" />
-                <span className="font-display text-xl font-semibold">Invest in Italy</span>
-              </Link>
+              <div className="flex items-center mb-4">
+                <Logo width={40} height={40} />
+              </div>
               <p className="text-sm text-muted-foreground max-w-md">
                 Expert guidance for foreign investors seeking opportunities in Italy&apos;s
                 dynamic market. Backed by decades of international experience and exclusive

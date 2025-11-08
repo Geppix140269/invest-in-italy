@@ -3,31 +3,16 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Navigation } from "@/components/navigation";
 import { ROICalculator } from "@/components/roi-calculator";
-import { ArrowLeft, Calculator } from "lucide-react";
+import { Calculator } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ROICalculatorPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-background">
       {/* Header */}
-      <header className="border-b bg-background/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="container-elegant py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/">
-              <Button variant="ghost" className="gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Back to Home
-              </Button>
-            </Link>
-            <Link href="/investment-guide">
-              <Button variant="outline">
-                View Investment Guide
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Navigation variant="solid" />
 
       {/* Hero Section */}
       <section className="py-20">

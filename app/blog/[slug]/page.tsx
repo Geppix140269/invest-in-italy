@@ -7,6 +7,7 @@ import { urlFor } from '@/lib/sanity';
 import { PortableText } from '@/components/portable-text';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Navigation } from '@/components/navigation';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 
 export const revalidate = 60;
@@ -83,8 +84,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article className="min-h-screen">
+      {/* Header */}
+      <Navigation variant="solid" />
+
       {/* Back Button */}
-      <div className="container mx-auto px-4 pt-8">
+      <div className="container mx-auto px-4 pt-24">
         <Link href="/blog">
           <Button variant="ghost" className="mb-4">
             <ArrowLeft className="h-4 w-4 mr-2" />

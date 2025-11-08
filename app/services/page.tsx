@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Navigation } from "@/components/navigation";
+import { Logo } from "@/components/logo";
 import {
   Building2,
   TrendingUp,
@@ -12,38 +14,14 @@ import {
   Wine,
   Sparkles,
   CheckCircle2,
-  ArrowRight,
-  Globe
+  ArrowRight
 } from "lucide-react";
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
-        <nav className="container-elegant py-4 md:py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <Globe className="h-6 w-6 text-accent" />
-              <span className="font-display text-xl font-semibold">Invest in Italy</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/#services" className="text-sm font-medium hover:text-accent transition-colors">
-                Services
-              </Link>
-              <Link href="/#about" className="text-sm font-medium hover:text-accent transition-colors">
-                About
-              </Link>
-              <Link href="/tax-benefits" className="text-sm font-medium hover:text-accent transition-colors">
-                Tax Benefits
-              </Link>
-              <Link href="/#contact">
-                <Button className="bg-primary hover:bg-primary/90">Get Started</Button>
-              </Link>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <Navigation variant="solid" />
 
       {/* Hero */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24">
@@ -442,10 +420,9 @@ export default function ServicesPage() {
       {/* Footer */}
       <footer className="border-t border-border bg-secondary/10 py-8">
         <div className="container-elegant text-center">
-          <Link href="/" className="inline-flex items-center space-x-2 mb-4">
-            <Globe className="h-6 w-6 text-accent" />
-            <span className="font-display text-xl font-semibold">Invest in Italy</span>
-          </Link>
+          <div className="flex justify-center mb-4">
+            <Logo width={40} height={40} />
+          </div>
           <p className="text-sm text-muted-foreground">
             &copy; 2024 Invest in Italy. All rights reserved.
           </p>
