@@ -1,0 +1,46 @@
+# Netlify Configuration for invest-in-italy
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_PRIVATE_TARGET = "server"
+
+# Redirect rules for Next.js
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/___netlify-handler"
+  status = 200
+
+# Environment variables (set these in Netlify UI)
+# NEXT_PUBLIC_SUPABASE_URL
+# NEXT_PUBLIC_SUPABASE_ANON_KEY
+# SUPABASE_SERVICE_ROLE_KEY
+# OPENAI_API_KEY
+# TWILIO_ACCOUNT_SID
+# TWILIO_AUTH_TOKEN
+# TWILIO_PHONE_NUMBER
+# TWILIO_WHATSAPP_NUMBER
+# RESEND_API_KEY
+# EMAIL_FROM
+# EMAIL_TO
+# NEXT_PUBLIC_SANITY_PROJECT_ID
+# NEXT_PUBLIC_SANITY_DATASET
+# NEXT_PUBLIC_SITE_URL
+
+# Functions configuration
+[functions]
+  node_bundler = "esbuild"
+
+# Headers for security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

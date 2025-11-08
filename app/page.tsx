@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,244 +18,372 @@ import {
   Mail,
   ArrowRight,
   CheckCircle2,
-  Globe
+  Globe,
+  Sparkles,
+  Star
 } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100
+    }
+  }
+};
+
+function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={fadeInUp}
+      transition={{ duration: 0.5 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="min-h-screen smooth-scroll">
-      {/* Header/Navigation */}
-      <header className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
+    <div className="min-h-screen smooth-scroll relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl float" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl float-delayed" />
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-secondary/20 rounded-full blur-3xl float" style={{ animationDelay: "1.5s" }} />
+      </div>
+
+      {/* Header/Navigation - Glassmorphism */}
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-0 w-full glass border-b border-white/20 z-50"
+      >
         <nav className="container-elegant py-4 md:py-6">
           <div className="flex items-center justify-between">
-            <Logo width={50} height={50} />
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <Logo width={50} height={50} />
+            </motion.div>
 
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/services" className="text-sm font-medium hover:text-accent transition-colors">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="hidden md:flex items-center space-x-8"
+            >
+              <Link href="/services" className="text-sm font-medium hover:text-accent transition-all hover:scale-105">
                 Services
               </Link>
-              <Link href="/tax-benefits" className="text-sm font-medium hover:text-accent transition-colors">
+              <Link href="/tax-benefits" className="text-sm font-medium hover:text-accent transition-all hover:scale-105">
                 Tax Benefits
               </Link>
-              <Link href="/blog" className="text-sm font-medium hover:text-accent transition-colors">
+              <Link href="/blog" className="text-sm font-medium hover:text-accent transition-all hover:scale-105">
                 Blog
               </Link>
-              <Link href="#about" className="text-sm font-medium hover:text-accent transition-colors">
+              <Link href="#about" className="text-sm font-medium hover:text-accent transition-all hover:scale-105">
                 About
               </Link>
               <Link href="#contact">
-                <Button className="bg-primary hover:bg-primary/90">
+                <Button className="bg-primary hover:bg-primary/90 glow transition-all hover:scale-105">
                   Get Started
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </nav>
-      </header>
+      </motion.header>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32">
-        <div className="container-elegant">
+      {/* Hero Section - Enhanced with gradients and animations */}
+      <section className="pt-32 pb-20 md:pt-40 md:pb-32 gradient-bg relative">
+        <div className="container-elegant relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-accent/10 text-accent hover:bg-accent/20 border-accent/20">
-              Your Gateway to Italian Investment Opportunities
-            </Badge>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Badge className="mb-6 bg-accent/10 text-accent hover:bg-accent/20 border-accent/20 shimmer">
+                <Sparkles className="w-3 h-3 mr-1 inline" />
+                Your Gateway to Italian Investment Opportunities
+              </Badge>
+            </motion.div>
 
-            <h1 className="heading-display mb-6 text-balance">
-              Unlock Exceptional Investment Opportunities in Italy
-            </h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="heading-display mb-6 text-balance"
+            >
+              Unlock <span className="gradient-text">Exceptional Investment</span> Opportunities in Italy
+            </motion.h1>
 
-            <p className="prose-elegant max-w-2xl mx-auto mb-10">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="prose-elegant max-w-2xl mx-auto mb-10"
+            >
               Leverage decades of international executive experience and exclusive
               connections to navigate the Italian market with confidence. From real
               estate to business development, we transform your investment vision into reality.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
               <Link href="#contact">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 glow transition-all hover:scale-105">
                   Schedule a Consultation
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="#services">
-                <Button size="lg" variant="outline" className="text-lg px-8">
+                <Button size="lg" variant="outline" className="text-lg px-8 hover:scale-105 transition-all">
                   Explore Services
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
+
+        {/* Decorative floating elements */}
+        <motion.div
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 5, 0]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-32 left-10 text-accent/20"
+        >
+          <Star className="w-12 h-12" />
+        </motion.div>
+        <motion.div
+          animate={{
+            y: [0, 20, 0],
+            rotate: [0, -5, 0]
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+          className="absolute bottom-20 right-20 text-accent/20"
+        >
+          <Sparkles className="w-16 h-16" />
+        </motion.div>
       </section>
 
-      {/* Trust Indicators */}
-      <section className="py-12 bg-secondary/30 border-y border-border">
+      {/* Trust Indicators - Animated counters */}
+      <AnimatedSection className="py-12 glass-dark border-y border-border">
         <div className="container-elegant">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl md:text-4xl font-display font-semibold text-accent mb-2">20+</div>
-              <p className="text-sm text-muted-foreground">Years Experience</p>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-display font-semibold text-accent mb-2">€500M+</div>
-              <p className="text-sm text-muted-foreground">Investments Facilitated</p>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-display font-semibold text-accent mb-2">150+</div>
-              <p className="text-sm text-muted-foreground">Successful Projects</p>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-display font-semibold text-accent mb-2">35+</div>
-              <p className="text-sm text-muted-foreground">Countries Served</p>
-            </div>
-          </div>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+          >
+            {[
+              { value: "20+", label: "Years Experience" },
+              { value: "€500M+", label: "Investments Facilitated" },
+              { value: "150+", label: "Successful Projects" },
+              { value: "35+", label: "Countries Served" }
+            ].map((stat, index) => (
+              <motion.div key={index} variants={fadeInUp}>
+                <div className="text-3xl md:text-4xl font-display font-semibold gradient-text mb-2">{stat.value}</div>
+                <p className="text-sm text-muted-foreground">{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* Services Section */}
+      {/* Services Section - 3D Cards */}
       <section id="services" className="section-padding">
         <div className="container-elegant">
-          <div className="max-w-3xl mb-16">
+          <AnimatedSection className="max-w-3xl mb-16">
             <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20 border-accent/20">
               Our Services
             </Badge>
             <h2 className="heading-section mb-6">
-              Comprehensive Investment Solutions
+              Comprehensive <span className="gradient-text">Investment Solutions</span>
             </h2>
             <p className="prose-elegant">
               From identifying opportunities to closing deals, we provide end-to-end
               support for your Italian investment journey.
             </p>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8"
+          >
             {/* Real Estate */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-accent/50">
-              <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                  <Building2 className="h-6 w-6 text-accent" />
-                </div>
-                <CardTitle className="font-display text-2xl">Real Estate Investment</CardTitle>
-                <CardDescription className="text-base">
-                  Premium properties in Italy&apos;s most sought-after locations
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Luxury residential & commercial properties</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Investment property analysis & due diligence</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Property management solutions</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Legal & tax optimization</span>
-                  </li>
-                </ul>
-                <Link href="/hospitality-investment">
-                  <Button className="w-full mt-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                    View Hospitality Opportunities
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+            <motion.div variants={scaleIn}>
+              <Card className="card-3d group h-full border-2 hover:border-accent/50 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardHeader className="relative">
+                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Building2 className="h-6 w-6 text-accent" />
+                  </div>
+                  <CardTitle className="font-display text-2xl">Real Estate Investment</CardTitle>
+                  <CardDescription className="text-base">
+                    Premium properties in Italy&apos;s most sought-after locations
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative">
+                  <ul className="space-y-3">
+                    {[
+                      "Luxury residential & commercial properties",
+                      "Investment property analysis & due diligence",
+                      "Property management solutions",
+                      "Legal & tax optimization"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start">
+                        <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/hospitality-investment">
+                    <Button className="w-full mt-6 group-hover:glow transition-all">
+                      View Hospitality Opportunities
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
 
             {/* Business Development */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-accent/50">
-              <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                  <TrendingUp className="h-6 w-6 text-accent" />
-                </div>
-                <CardTitle className="font-display text-2xl">Business Development</CardTitle>
-                <CardDescription className="text-base">
-                  Strategic guidance for market entry and expansion
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Market entry strategy & feasibility studies</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Partnership & acquisition opportunities</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">SME investment advisory</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Government incentives & funding programs</span>
-                  </li>
-                </ul>
-                <Link href="/services">
-                  <Button className="w-full mt-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                    Learn More
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+            <motion.div variants={scaleIn}>
+              <Card className="card-3d group h-full border-2 hover:border-accent/50 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardHeader className="relative">
+                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <TrendingUp className="h-6 w-6 text-accent" />
+                  </div>
+                  <CardTitle className="font-display text-2xl">Business Development</CardTitle>
+                  <CardDescription className="text-base">
+                    Strategic guidance for market entry and expansion
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative">
+                  <ul className="space-y-3">
+                    {[
+                      "Market entry strategy & feasibility studies",
+                      "Partnership & acquisition opportunities",
+                      "SME investment advisory",
+                      "Government incentives & funding programs"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start">
+                        <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/services">
+                    <Button className="w-full mt-6 group-hover:glow transition-all">
+                      Learn More
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
 
             {/* Management Consulting */}
-            <Card className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-accent/50">
-              <CardHeader>
-                <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                  <Users className="h-6 w-6 text-accent" />
-                </div>
-                <CardTitle className="font-display text-2xl">Management Expertise</CardTitle>
-                <CardDescription className="text-base">
-                  Executive leadership for your Italian operations
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Operational strategy & optimization</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Cross-cultural management consulting</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Interim executive services</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Performance improvement programs</span>
-                  </li>
-                </ul>
-                <Link href="/services">
-                  <Button className="w-full mt-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                    Learn More
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
+            <motion.div variants={scaleIn}>
+              <Card className="card-3d group h-full border-2 hover:border-accent/50 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardHeader className="relative">
+                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Users className="h-6 w-6 text-accent" />
+                  </div>
+                  <CardTitle className="font-display text-2xl">Management Expertise</CardTitle>
+                  <CardDescription className="text-base">
+                    Executive leadership for your Italian operations
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative">
+                  <ul className="space-y-3">
+                    {[
+                      "Operational strategy & optimization",
+                      "Cross-cultural management consulting",
+                      "Interim executive services",
+                      "Performance improvement programs"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start">
+                        <CheckCircle2 className="h-5 w-5 text-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/services">
+                    <Button className="w-full mt-6 group-hover:glow transition-all">
+                      Learn More
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* About/Credentials Section */}
-      <section id="about" className="section-padding bg-secondary/20">
+      <section id="about" className="section-padding gradient-bg">
         <div className="container-elegant">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
+            <AnimatedSection>
               <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20 border-accent/20">
                 Your Trusted Advisory Team
               </Badge>
               <h2 className="heading-section mb-6">
-                Comprehensive Expertise Across the Entire Value Chain
+                Comprehensive <span className="gradient-text">Expertise</span> Across the Entire Value Chain
               </h2>
               <p className="prose-elegant mb-6">
                 We are a team of international executives with decades of combined experience
@@ -270,44 +400,42 @@ export default function Home() {
                 of international business.
               </p>
 
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Award className="h-6 w-6 text-accent mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-semibold mb-1">End-to-End Value Chain Expertise</h3>
-                    <p className="text-sm text-muted-foreground">
-                      From startup launch through scale-up to MNC operations—funding, financing,
-                      growth strategies, and profitability optimization
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Award className="h-6 w-6 text-accent mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Global Executive Leadership</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Collective experience leading multinational teams across Europe, Asia, Americas,
-                      and Middle East in diverse industries
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Award className="h-6 w-6 text-accent mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Exclusive Network Access</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Italian SME Association and International Trade Council membership providing
-                      direct connections to decision-makers, deal flow, and off-market opportunities
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="space-y-4"
+              >
+                {[
+                  {
+                    title: "End-to-End Value Chain Expertise",
+                    desc: "From startup launch through scale-up to MNC operations—funding, financing, growth strategies, and profitability optimization"
+                  },
+                  {
+                    title: "Global Executive Leadership",
+                    desc: "Collective experience leading multinational teams across Europe, Asia, Americas, and Middle East in diverse industries"
+                  },
+                  {
+                    title: "Exclusive Network Access",
+                    desc: "Italian SME Association and International Trade Council membership providing direct connections to decision-makers, deal flow, and off-market opportunities"
+                  }
+                ].map((item, i) => (
+                  <motion.div key={i} variants={fadeInUp} className="flex items-start">
+                    <Award className="h-6 w-6 text-accent mr-3 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-semibold mb-1">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatedSection>
 
-            <div className="space-y-6">
-              <Card className="border-2 border-accent/20">
+            <AnimatedSection>
+              <Card className="border-2 border-accent/20 glass hover:glow transition-all duration-500">
                 <CardHeader>
-                  <CardTitle className="font-display text-xl">Why Italy?</CardTitle>
+                  <CardTitle className="font-display text-xl gradient-text">Why Italy?</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4 text-sm">
                   <p>
@@ -315,30 +443,22 @@ export default function Home() {
                     EU market access, and exceptional investment opportunities across multiple sectors.
                   </p>
                   <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <ArrowRight className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                      <span>3rd largest economy in the Eurozone</span>
-                    </li>
-                    <li className="flex items-start">
-                      <ArrowRight className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Gateway to Mediterranean and EU markets</span>
-                    </li>
-                    <li className="flex items-start">
-                      <ArrowRight className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                      <span>World-leading sectors: fashion, design, automotive, food</span>
-                    </li>
-                    <li className="flex items-start">
-                      <ArrowRight className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Attractive investment incentives and tax benefits</span>
-                    </li>
-                    <li className="flex items-start">
-                      <ArrowRight className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Unparalleled quality of life and cultural heritage</span>
-                    </li>
+                    {[
+                      "3rd largest economy in the Eurozone",
+                      "Gateway to Mediterranean and EU markets",
+                      "World-leading sectors: fashion, design, automotive, food",
+                      "Attractive investment incentives and tax benefits",
+                      "Unparalleled quality of life and cultural heritage"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start">
+                        <ArrowRight className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
                   </ul>
                 </CardContent>
               </Card>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -346,152 +466,151 @@ export default function Home() {
       {/* Insights/Blog Preview Section */}
       <section id="insights" className="section-padding">
         <div className="container-elegant">
-          <div className="flex items-end justify-between mb-12">
+          <AnimatedSection className="flex items-end justify-between mb-12">
             <div>
               <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20 border-accent/20">
                 Latest Insights
               </Badge>
               <h2 className="heading-section">
-                Investment Intelligence
+                Investment <span className="gradient-text">Intelligence</span>
               </h2>
             </div>
             <Link href="/insights">
-              <Button variant="outline">
+              <Button variant="outline" className="hover:glow transition-all">
                 View All Articles
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Badge className="w-fit mb-3">Real Estate</Badge>
-                <CardTitle className="font-display text-xl group-hover:text-accent transition-colors">
-                  Italian Property Market Trends 2024
-                </CardTitle>
-                <CardDescription>
-                  Analyzing the post-pandemic recovery and emerging opportunities in
-                  key Italian cities.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link href="/insights/property-trends-2024">
-                  <Button variant="ghost" className="group-hover:text-accent p-0">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Badge className="w-fit mb-3">Business</Badge>
-                <CardTitle className="font-display text-xl group-hover:text-accent transition-colors">
-                  Navigating Italian Business Culture
-                </CardTitle>
-                <CardDescription>
-                  Essential insights for foreign investors entering the Italian market.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link href="/insights/business-culture">
-                  <Button variant="ghost" className="group-hover:text-accent p-0">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Badge className="w-fit mb-3">Tax & Legal</Badge>
-                <CardTitle className="font-display text-xl group-hover:text-accent transition-colors">
-                  Tax Incentives for Foreign Investors
-                </CardTitle>
-                <CardDescription>
-                  Understanding Italy&apos;s favorable tax regimes and investment incentives.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link href="/insights/tax-incentives">
-                  <Button variant="ghost" className="group-hover:text-accent p-0">
-                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                badge: "Real Estate",
+                title: "Italian Property Market Trends 2024",
+                desc: "Analyzing the post-pandemic recovery and emerging opportunities in key Italian cities.",
+                link: "/insights/property-trends-2024"
+              },
+              {
+                badge: "Business",
+                title: "Navigating Italian Business Culture",
+                desc: "Essential insights for foreign investors entering the Italian market.",
+                link: "/insights/business-culture"
+              },
+              {
+                badge: "Tax & Legal",
+                title: "Tax Incentives for Foreign Investors",
+                desc: "Understanding Italy's favorable tax regimes and investment incentives.",
+                link: "/insights/tax-incentives"
+              }
+            ].map((post, i) => (
+              <motion.div key={i} variants={scaleIn}>
+                <Card className="group hover:shadow-xl transition-all duration-500 card-3d h-full">
+                  <CardHeader>
+                    <Badge className="w-fit mb-3 shimmer">{post.badge}</Badge>
+                    <CardTitle className="font-display text-xl group-hover:text-accent transition-colors">
+                      {post.title}
+                    </CardTitle>
+                    <CardDescription>{post.desc}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Link href={post.link}>
+                      <Button variant="ghost" className="group-hover:text-accent p-0 transition-all">
+                        Read More <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* Tools Section */}
-      <section id="tools" className="section-padding bg-primary text-primary-foreground">
-        <div className="container-elegant">
-          <div className="max-w-3xl mb-12">
+      {/* Tools Section - Glassmorphism with glow */}
+      <section id="tools" className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent -z-10" />
+        <div className="container-elegant relative z-10">
+          <AnimatedSection className="max-w-3xl mb-12">
             <Badge className="mb-4 bg-accent text-accent-foreground hover:bg-accent/90">
               Investment Tools
             </Badge>
-            <h2 className="heading-section mb-6">
-              Make Informed Decisions
+            <h2 className="heading-section mb-6 text-primary-foreground">
+              Make <span className="text-accent">Informed Decisions</span>
             </h2>
-            <p className="text-lg leading-relaxed opacity-90">
+            <p className="text-lg leading-relaxed opacity-90 text-primary-foreground">
               Access our suite of tools designed to help you evaluate and plan your
               Italian investment strategy.
             </p>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card className="bg-card/5 backdrop-blur border-primary-foreground/20 text-primary-foreground hover:bg-card/10 transition-colors">
-              <CardHeader>
-                <Calculator className="h-8 w-8 mb-3 text-accent" />
-                <CardTitle className="font-display text-xl">ROI Calculator</CardTitle>
-                <CardDescription className="text-primary-foreground/80">
-                  Estimate potential returns on Italian real estate and business investments
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button variant="outline" className="border-primary-foreground/30 hover:bg-primary-foreground hover:text-primary">
-                  Launch Calculator
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card/5 backdrop-blur border-primary-foreground/20 text-primary-foreground hover:bg-card/10 transition-colors">
-              <CardHeader>
-                <FileText className="h-8 w-8 mb-3 text-accent" />
-                <CardTitle className="font-display text-xl">Investment Guide</CardTitle>
-                <CardDescription className="text-primary-foreground/80">
-                  Download our comprehensive guide to investing in Italy
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button variant="outline" className="border-primary-foreground/30 hover:bg-primary-foreground hover:text-primary">
-                  Download Guide
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 gap-6"
+          >
+            {[
+              {
+                icon: Calculator,
+                title: "ROI Calculator",
+                desc: "Estimate potential returns on Italian real estate and business investments",
+                action: "Launch Calculator",
+                link: "/roi-calculator"
+              },
+              {
+                icon: FileText,
+                title: "Investment Guide",
+                desc: "Download our comprehensive guide to investing in Italy",
+                action: "Download Guide",
+                link: "/investment-guide"
+              }
+            ].map((tool, i) => (
+              <motion.div key={i} variants={scaleIn}>
+                <Card className="glass border-white/20 text-primary-foreground hover:glow transition-all duration-500 card-3d">
+                  <CardHeader>
+                    <tool.icon className="h-8 w-8 mb-3 text-accent" />
+                    <CardTitle className="font-display text-xl">{tool.title}</CardTitle>
+                    <CardDescription className="text-primary-foreground/80">
+                      {tool.desc}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Link href={tool.link}>
+                      <Button variant="outline" className="border-primary-foreground/30 hover:bg-primary-foreground hover:text-primary transition-all">
+                        {tool.action}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* Newsletter Section */}
-      <section className="section-padding bg-secondary/20">
+      <section className="section-padding gradient-bg">
         <div className="container-elegant">
-          <div className="max-w-2xl mx-auto text-center">
+          <AnimatedSection className="max-w-2xl mx-auto text-center">
             <Mail className="h-12 w-12 text-accent mx-auto mb-6" />
             <h2 className="heading-section mb-4">
-              Stay Informed
+              Stay <span className="gradient-text">Informed</span>
             </h2>
             <p className="prose-elegant mb-8">
               Receive exclusive insights, market updates, and investment opportunities
               directly to your inbox.
             </p>
-
             <NewsletterForm />
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -499,12 +618,12 @@ export default function Home() {
       <section id="contact" className="section-padding">
         <div className="container-elegant">
           <div className="grid md:grid-cols-2 gap-16">
-            <div>
+            <AnimatedSection>
               <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20 border-accent/20">
                 Get in Touch
               </Badge>
               <h2 className="heading-section mb-6">
-                Start Your Investment Journey
+                Start Your <span className="gradient-text">Investment Journey</span>
               </h2>
               <p className="prose-elegant mb-8">
                 Whether you&apos;re exploring opportunities or ready to invest, our team is here
@@ -515,34 +634,33 @@ export default function Home() {
                 <div>
                   <h3 className="font-semibold mb-2">What to Expect</h3>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start">
-                      <CheckCircle2 className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Initial consultation within 24 hours</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle2 className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Confidential discussion of your investment goals</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle2 className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                      <span>Customized strategy recommendations</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle2 className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
-                      <span>No obligation, complimentary initial assessment</span>
-                    </li>
+                    {[
+                      "Initial consultation within 24 hours",
+                      "Confidential discussion of your investment goals",
+                      "Customized strategy recommendations",
+                      "No obligation, complimentary initial assessment"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start">
+                        <CheckCircle2 className="h-4 w-4 text-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
 
-            <ContactForm />
+            <AnimatedSection>
+              <div className="glass p-8 rounded-lg">
+                <ContactForm />
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-secondary/10">
+      <footer className="border-t border-border glass-dark">
         <div className="container-elegant py-12">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="md:col-span-2">

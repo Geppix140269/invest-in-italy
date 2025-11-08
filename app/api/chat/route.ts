@@ -1,18 +1,29 @@
 import { openai } from '@ai-sdk/openai';
-import { streamText, convertToCoreMessages } from 'ai';
+import { streamText } from 'ai';
 
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
   try {
-    const { messages } = await req.json();
+    const body = await req.json();
+    console.log('Received request body:', JSON.stringify(body, null, 2));
+
+    const { messages } = body;
 
     if (!messages || !Array.isArray(messages)) {
+      console.error('Invalid messages:', messages);
       return Response.json(
         { error: 'Messages array is required' },
         { status: 400 }
       );
     }
+
+    console.log('Processing', messages.length, 'messages');
+    console.log('Messages before cleaning:', messages);
+
+    // Strip the 'id' field from messages - convertToCoreMessages only needs role and content
+    const cleanMessages = messages.map(({ role, content }: any) => ({ role, content }));
+    console.log('Clean messages:', cleanMessages);
 
     const systemMessage = `You are Sofia, an expert Italian investment advisor with deep knowledge of Italian real estate, business opportunities, and tax incentives. All information you provide is accurate as of 2025.
 
@@ -56,10 +67,21 @@ YOUR ROLE:
 
 CRITICAL: Never guarantee tax benefits without mentioning eligibility requirements. Always recommend professional tax advice for individual situations. Maintain a professional yet friendly tone while being completely accurate and transparent about requirements and limitations.`;
 
+    // Convert messages to the format expected by the AI SDK
+    // Filter out any initial assistant messages and convert to proper format
+    const coreMessages = cleanMessages
+      .filter((msg: any) => msg.role !== 'assistant' || msg.content !== cleanMessages[0]?.content)
+      .map((msg: any) => ({
+        role: msg.role as 'user' | 'assistant',
+        content: msg.content
+      }));
+
+    console.log('Core messages for AI:', coreMessages);
+
     const result = streamText({
       model: openai('gpt-4-turbo'),
       system: systemMessage,
-      messages: convertToCoreMessages(messages),
+      messages: coreMessages,
       temperature: 0.7,
     });
 

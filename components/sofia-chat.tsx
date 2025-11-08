@@ -1,39 +1,125 @@
 'use client';
 
+// Sofia AI Chat Component
 import { useState, useRef, useEffect } from 'react';
-import { useChat } from '@ai-sdk/react';
-import { DefaultChatTransport } from 'ai';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { X, Send, MessageCircle, Sparkles } from 'lucide-react';
 
+type Message = {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+};
+
 export function SofiaChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: 'welcome',
+      role: 'assistant',
+      content: "Hello! I'm Sofia, your Italian investment advisor. I'm here to help you discover exceptional opportunities in Italy—from luxury real estate and hospitality ventures to business acquisitions and tax optimization strategies. What interests you today?",
+    },
+  ]);
+  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const { messages, sendMessage, status, setMessages } = useChat({
-    transport: new DefaultChatTransport({
-      api: '/api/chat',
-    }),
-  });
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  // Add welcome message on mount
-  useEffect(() => {
-    if (messages.length === 0) {
-      setMessages([
+    if (!input.trim() || isLoading) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: input.trim(),
+    };
+
+    // Add user message to chat
+    setMessages((prev) => [...prev, userMessage]);
+    setInput('');
+    setIsLoading(true);
+
+    try {
+      console.log('Sending messages:', [...messages, userMessage]);
+
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: [...messages, userMessage],
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+        console.error('API error:', response.status, errorData);
+        throw new Error(errorData.error || 'Failed to get response');
+      }
+
+      // Parse the text stream response
+      if (!response.body) {
+        throw new Error('No response body');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let assistantMessage = '';
+
+      // Create assistant message placeholder
+      const assistantId = (Date.now() + 1).toString();
+      setMessages((prev) => [
+        ...prev,
         {
-          id: 'welcome',
+          id: assistantId,
           role: 'assistant',
-          parts: [{
-            type: 'text',
-            text: "Hello! I'm Sofia, your Italian investment advisor. I'm here to help you discover exceptional opportunities in Italy—from luxury real estate and hospitality ventures to business acquisitions and tax optimization strategies. What interests you today?",
-          }],
+          content: '',
         },
       ]);
+
+      // Read the stream
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          // Decode the chunk
+          const text = decoder.decode(value, { stream: true });
+
+          // Accumulate the text
+          assistantMessage += text;
+
+          // Update the assistant message in real-time
+          setMessages((prev) =>
+            prev.map((msg) =>
+              msg.id === assistantId
+                ? { ...msg, content: assistantMessage }
+                : msg
+            )
+          );
+        }
+      } catch (streamError) {
+        console.error('Stream reading error:', streamError);
+        throw streamError;
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          role: 'assistant',
+          content: 'Sorry, I encountered an error. Please try again.',
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
     }
-  }, [messages.length, setMessages]);
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -42,6 +128,13 @@ export function SofiaChat() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  const quickActions = [
+    'Tax benefits in Italy',
+    'Hospitality investments',
+    'Real estate opportunities',
+    'Schedule consultation',
+  ];
 
   return (
     <>
@@ -117,14 +210,12 @@ export function SofiaChat() {
                     </div>
                   )}
                   <p className="text-sm leading-relaxed whitespace-pre-wrap">
-                    {message.parts.map((part) =>
-                      part.type === 'text' ? part.text : null
-                    ).join('')}
+                    {message.content}
                   </p>
                 </div>
               </div>
             ))}
-            {status === 'streaming' && (
+            {isLoading && (
               <div className="flex justify-start">
                 <div className="max-w-[85%] rounded-2xl rounded-bl-sm px-4 py-3 bg-card border border-border">
                   <div className="flex items-center gap-2">
@@ -142,25 +233,19 @@ export function SofiaChat() {
           </div>
 
           {/* Input */}
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            if (input.trim() && status === 'ready') {
-              sendMessage({ text: input });
-              setInput('');
-            }
-          }} className="p-4 border-t border-border bg-background">
+          <form onSubmit={onSubmit} className="p-4 border-t border-border bg-background">
             <div className="flex gap-2">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about Italian investments..."
-                disabled={status !== 'ready'}
+                disabled={isLoading}
                 className="flex-1"
                 autoComplete="off"
               />
               <Button
                 type="submit"
-                disabled={status !== 'ready' || !input.trim()}
+                disabled={isLoading || !input.trim()}
                 size="icon"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground"
               >
@@ -176,20 +261,21 @@ export function SofiaChat() {
           <div className="px-4 pb-4 pt-2 border-t border-border/50 bg-secondary/5">
             <div className="text-xs font-semibold text-muted-foreground mb-2">Quick questions:</div>
             <div className="flex flex-wrap gap-2">
-              {[
-                'Tax benefits in Italy',
-                'Hospitality investments',
-                'Real estate opportunities',
-                'Schedule consultation',
-              ].map((suggestion) => (
+              {quickActions.map((suggestion) => (
                 <button
                   key={suggestion}
                   onClick={() => {
-                    if (status === 'ready') {
-                      sendMessage({ text: suggestion });
+                    if (!isLoading) {
+                      setInput(suggestion);
+                      setTimeout(() => {
+                        const syntheticEvent = {
+                          preventDefault: () => {},
+                        } as React.FormEvent<HTMLFormElement>;
+                        onSubmit(syntheticEvent);
+                      }, 100);
                     }
                   }}
-                  disabled={status !== 'ready'}
+                  disabled={isLoading}
                   className="text-xs px-3 py-1.5 rounded-full bg-accent/10 text-accent hover:bg-accent/20 transition-colors disabled:opacity-50"
                 >
                   {suggestion}
