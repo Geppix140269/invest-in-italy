@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Navigation } from "@/components/navigation";
 import { Logo } from "@/components/logo";
+import { VideoHero } from "@/components/video-hero";
 import { ContactForm } from "@/components/contact-form";
 import { NewsletterForm } from "@/components/newsletter-form";
 import {
@@ -85,93 +86,17 @@ export default function Home() {
       {/* Header/Navigation - Glassmorphism */}
       <Navigation variant="glass" />
 
-      {/* Hero Section - Enhanced with gradients and animations */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32 gradient-bg relative">
-        <div className="container-elegant relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <Badge className="mb-6 bg-accent/10 text-accent hover:bg-accent/20 border-accent/20 shimmer">
-                <Sparkles className="w-3 h-3 mr-1 inline" />
-                Your Gateway to Italian Investment Opportunities
-              </Badge>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="heading-display mb-6 text-balance"
-            >
-              Unlock <span className="gradient-text">Exceptional Investment</span> Opportunities in Italy
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="prose-elegant max-w-2xl mx-auto mb-10"
-            >
-              Leverage decades of international executive experience and exclusive
-              connections to navigate the Italian market with confidence. From real
-              estate to business development, we transform your investment vision into reality.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Link href="#contact">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 glow transition-all hover:scale-105">
-                  Schedule a Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link href="#services">
-                <Button size="lg" variant="outline" className="text-lg px-8 hover:scale-105 transition-all">
-                  Explore Services
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Decorative floating elements */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, 0]
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-32 left-10 text-accent/20"
-        >
-          <Star className="w-12 h-12" />
-        </motion.div>
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            rotate: [0, -5, 0]
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-          className="absolute bottom-20 right-20 text-accent/20"
-        >
-          <Sparkles className="w-16 h-16" />
-        </motion.div>
-      </section>
+      {/* Video Hero Section */}
+      <VideoHero
+        videoSrc="/videos/intro.mp4"
+        poster="/videos/intro-poster.jpg"
+        title="Invest in Italy"
+        subtitle="Your Gateway to Italian Investment Opportunities"
+        autoPlay={true}
+        loop={true}
+        showOverlay={true}
+        showControls={true}
+      />
 
       {/* Trust Indicators - Animated counters */}
       <AnimatedSection className="py-12 glass-dark border-y border-border">
