@@ -58,6 +58,9 @@ export function Navigation({ variant = "glass", className = "" }: NavigationProp
             <Link href="/blog" className="text-sm font-medium hover:text-accent transition-all hover:scale-105">
               Blog
             </Link>
+            <Link href="/#market-news" className="text-sm font-medium hover:text-accent transition-all hover:scale-105">
+              Market News
+            </Link>
             <Link href="/#contact">
               <Button className="bg-primary hover:bg-primary/90 glow transition-all hover:scale-105">
                 Get Started
@@ -117,6 +120,13 @@ export function Navigation({ variant = "glass", className = "" }: NavigationProp
               onClick={() => setMobileMenuOpen(false)}
             >
               Blog
+            </Link>
+            <Link
+              href="/#market-news"
+              className="block text-sm font-medium hover:text-accent transition-colors py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Market News
             </Link>
             <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>
               <Button className="w-full bg-primary hover:bg-primary/90">

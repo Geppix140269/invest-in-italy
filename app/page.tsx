@@ -12,6 +12,7 @@ import { ContactForm } from "@/components/contact-form";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { MarketInsights } from "@/components/market-insights";
 import { LatestInsights } from "@/components/latest-insights";
+import { ItalyNewsFeed } from "@/components/italy-news-feed";
 import { Suspense } from "react";
 import {
   Building2,
@@ -525,6 +526,28 @@ export default function Home() {
               </div>
             </AnimatedSection>
           </div>
+        </div>
+      </section>
+
+      {/* Live Italy Economic News Feed */}
+      <section id="market-news" className="section-padding bg-gradient-to-br from-background via-muted/30 to-background">
+        <div className="container-elegant">
+          <AnimatedSection className="max-w-3xl mb-12">
+            <Badge className="mb-4 bg-accent/10 text-accent hover:bg-accent/20 border-accent/20 animate-pulse">
+              Live News
+            </Badge>
+            <h2 className="heading-section mb-6">
+              Italy Economic <span className="gradient-text">News Feed</span>
+            </h2>
+            <p className="prose-elegant">
+              Stay informed with real-time economic news, market updates, and financial indicators
+              for Italy. Powered by TradingEconomics.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection>
+            <ItalyNewsFeed />
+          </AnimatedSection>
         </div>
       </section>
 
