@@ -11,6 +11,8 @@ import { VideoHero } from "@/components/video-hero";
 import { ContactForm } from "@/components/contact-form";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { MarketInsights } from "@/components/market-insights";
+import { LatestInsights } from "@/components/latest-insights";
+import { Suspense } from "react";
 import {
   Building2,
   TrendingUp,
@@ -367,7 +369,7 @@ export default function Home() {
                 Investment <span className="gradient-text">Intelligence</span>
               </h2>
             </div>
-            <Link href="/insights">
+            <Link href="/blog">
               <Button variant="outline" className="hover:glow transition-all">
                 View All Articles
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -380,47 +382,22 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-8"
           >
-            {[
-              {
-                badge: "Real Estate",
-                title: "Italian Property Market Trends 2024",
-                desc: "Analyzing the post-pandemic recovery and emerging opportunities in key Italian cities.",
-                link: "/insights/property-trends-2024"
-              },
-              {
-                badge: "Business",
-                title: "Navigating Italian Business Culture",
-                desc: "Essential insights for foreign investors entering the Italian market.",
-                link: "/insights/business-culture"
-              },
-              {
-                badge: "Tax & Legal",
-                title: "Tax Incentives for Foreign Investors",
-                desc: "Understanding Italy's favorable tax regimes and investment incentives.",
-                link: "/insights/tax-incentives"
-              }
-            ].map((post, i) => (
-              <motion.div key={i} variants={scaleIn}>
-                <Card className="group hover:shadow-xl transition-all duration-500 card-3d h-full">
-                  <CardHeader>
-                    <Badge className="w-fit mb-3 shimmer">{post.badge}</Badge>
-                    <CardTitle className="font-display text-xl group-hover:text-accent transition-colors">
-                      {post.title}
-                    </CardTitle>
-                    <CardDescription>{post.desc}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Link href={post.link}>
-                      <Button variant="ghost" className="group-hover:text-accent p-0 transition-all">
-                        Read More <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            <Suspense fallback={
+              <div className="grid md:grid-cols-3 gap-8">
+                {[1, 2, 3].map((i) => (
+                  <Card key={i} className="h-full animate-pulse">
+                    <CardHeader>
+                      <div className="h-6 w-20 bg-muted rounded mb-3" />
+                      <div className="h-8 bg-muted rounded mb-2" />
+                      <div className="h-16 bg-muted rounded" />
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+            }>
+              <LatestInsights />
+            </Suspense>
           </motion.div>
         </div>
       </section>
