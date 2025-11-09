@@ -101,8 +101,10 @@ export function VideoHero({
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <video
+          key={currentVideo}
           ref={videoRef}
           className="w-full h-full object-cover"
+          src={currentVideo}
           autoPlay={autoPlay}
           loop={videos.length === 1 ? loop : false}
           muted={isMuted}
@@ -111,7 +113,6 @@ export function VideoHero({
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
         >
-          <source src={currentVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
