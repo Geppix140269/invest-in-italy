@@ -1,13 +1,13 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Play, Pause, Volume2, VolumeX, Maximize } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface VideoHeroProps {
-  videoSrc: string;
+  videoSrc: string | string[];
   poster?: string;
   title?: string;
   subtitle?: string;
@@ -30,6 +30,43 @@ export function VideoHero({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [isMuted, setIsMuted] = useState(true);
+
+  // Handle multiple videos
+  const videos = Array.isArray(videoSrc) ? videoSrc : [videoSrc];
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const currentVideo = videos[currentVideoIndex];
+
+  // Auto-advance to next video when current one ends
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || videos.length <= 1) return;
+
+    const handleVideoEnd = () => {
+      // Move to next video
+      setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+
+      // Auto-play next video if we were playing
+      if (isPlaying && video) {
+        setTimeout(() => {
+          video.play().catch(err => console.log('Autoplay prevented:', err));
+        }, 100);
+      }
+    };
+
+    video.addEventListener('ended', handleVideoEnd);
+    return () => video.removeEventListener('ended', handleVideoEnd);
+  }, [videos.length, isPlaying]);
+
+  // Update video source when index changes
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.load();
+    if (isPlaying) {
+      video.play().catch(err => console.log('Autoplay prevented:', err));
+    }
+  }, [currentVideoIndex, isPlaying]);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -67,14 +104,14 @@ export function VideoHero({
           ref={videoRef}
           className="w-full h-full object-cover"
           autoPlay={autoPlay}
-          loop={loop}
+          loop={videos.length === 1 ? loop : false}
           muted={isMuted}
           playsInline
           poster={poster}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
         >
-          <source src={videoSrc} type="video/mp4" />
+          <source src={currentVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
