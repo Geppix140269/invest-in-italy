@@ -1,9 +1,7 @@
-'use client';
-
 import { Suspense } from 'react';
 import { Navigation } from '@/components/navigation';
 import { Card } from '@/components/widgets/card';
-import { Tabs } from '@/components/widgets/tabs';
+import { WidgetsTabs } from '@/components/widgets/widgets-tabs';
 import { TradingEconomicsItalyNews } from '@/components/widgets/trading-economics-italy-news';
 import { InvestingCalendarItaly } from '@/components/widgets/investing-calendar-italy';
 import { FinlogixNewsFeed } from '@/components/widgets/finlogix-news-feed';
@@ -12,7 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { Code2 } from 'lucide-react';
 
-export default function WidgetsPage() {
+export default async function WidgetsPage() {
   const tabs = [
     {
       label: 'TradingEconomics',
@@ -94,7 +92,7 @@ export default function WidgetsPage() {
           </Link>
         </div>
 
-        <Tabs tabs={tabs} />
+        <WidgetsTabs tabs={tabs} />
 
         <div className="mt-12 p-6 rounded-lg bg-muted/50 border border-border">
           <h2 className="text-xl font-semibold mb-2">Note on Content Security Policy (CSP)</h2>
