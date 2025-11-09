@@ -89,8 +89,8 @@ export default function Home() {
 
       {/* Video Hero Section */}
       <VideoHero
-        videoSrc="/videos/intro.mp4"
-        poster="/videos/intro-poster.jpg"
+        videoSrc="https://res.cloudinary.com/dusubfxgo/video/upload/v1753030832/geppix1402_81420_Homepage_concept_for_Apulink.com_a_modern_di_02fb68c3-5806-40b5-984f-f47e14c23456_2_ropt8y.mp4"
+        poster="https://res.cloudinary.com/dusubfxgo/image/upload/v1753030826/geppix1402_81420_Homepage_concept_for_Apulink.com_a_modern_di_8cc82465-1b62-45b5-863f-f8ca2c75318a_0_eorx9g.png"
         title="Invest in Italy"
         subtitle="Your Gateway to Italian Investment Opportunities"
         autoPlay={true}
