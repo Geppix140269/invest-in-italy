@@ -1,7 +1,7 @@
 export const DEFAULT_RSS_FEEDS = [
-  'https://www.borsaitaliana.it/rss/news/news.xml',
-  'https://www.ansa.it/sito/ansait_rss.xml',
-  'https://www.ilsole24ore.com/rss/italia--finanza.xml',
+  'https://www.ansa.it/sito/notizie/economia/economia_rss.xml',
+  'https://www.ansa.it/sito/notizie/topnews/topnews_rss.xml',
+  'https://www.reuters.com/rssFeed/worldNews',
 ];
 
 export const DEFAULT_KEYWORDS = [
