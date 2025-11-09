@@ -124,25 +124,36 @@ export function InvestmentGuide() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call to save lead and send guide
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      // Generate the guide content
+      const guideHTML = generateGuideHTML();
 
-    // Generate the guide content as downloadable HTML/PDF
-    const guideHTML = generateGuideHTML();
+      // Send to API endpoint
+      const response = await fetch('/api/send-guide', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          guideHTML,
+        }),
+      });
 
-    // Create downloadable file
-    const blob = new Blob([guideHTML], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'investing-in-italy-complete-guide-2024.html';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+      const data = await response.json();
 
-    setIsSubmitting(false);
-    setDownloadReady(true);
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send guide');
+      }
+
+      setIsSubmitting(false);
+      setDownloadReady(true);
+    } catch (error) {
+      console.error('Error sending guide:', error);
+      alert('There was an error sending your guide. Please try again or contact us at info@1402celsius.com');
+      setIsSubmitting(false);
+    }
   };
 
   const generateGuideHTML = () => {
@@ -681,11 +692,11 @@ export function InvestmentGuide() {
           <Card className="h-full bg-gradient-to-br from-accent/5 to-transparent">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Download className="h-5 w-5 text-accent" />
-                Download Your Free Guide
+                <Mail className="h-5 w-5 text-accent" />
+                Get Your Free Guide via Email
               </CardTitle>
               <CardDescription>
-                Enter your details to receive instant access
+                Enter your details and we'll send the guide to your inbox
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -722,10 +733,10 @@ export function InvestmentGuide() {
                       <div className="text-xs text-blue-800">
                         <strong>What happens next?</strong>
                         <ul className="mt-2 space-y-1 ml-4 list-disc">
-                          <li>Instant download of the complete guide</li>
-                          <li>Welcome email with additional resources</li>
-                          <li>Exclusive access to market updates</li>
-                          <li>No spam, unsubscribe anytime</li>
+                          <li>Comprehensive guide sent to your email as PDF attachment</li>
+                          <li>Professional welcome email with next steps</li>
+                          <li>Free consultation offer included</li>
+                          <li>Optional market updates (unsubscribe anytime)</li>
                         </ul>
                       </div>
                     </div>
@@ -743,15 +754,15 @@ export function InvestmentGuide() {
                       </>
                     ) : (
                       <>
-                        <Download className="mr-2 h-5 w-5" />
-                        Download Free Guide
+                        <Mail className="mr-2 h-5 w-5" />
+                        Send Guide to My Email
                       </>
                     )}
                   </Button>
 
                   <p className="text-xs text-center text-muted-foreground">
-                    By downloading, you agree to receive occasional emails about investment
-                    opportunities. We respect your privacy.
+                    By requesting this guide, you agree to receive occasional emails about investment
+                    opportunities. We respect your privacy. Unsubscribe anytime.
                   </p>
                 </form>
               ) : (
@@ -764,17 +775,18 @@ export function InvestmentGuide() {
                     <CheckCircle2 className="h-8 w-8 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-xl mb-2">Download Started!</h3>
+                    <h3 className="font-semibold text-xl mb-2">Check Your Email!</h3>
                     <p className="text-sm text-muted-foreground">
-                      Your investment guide should start downloading automatically.
-                      Check your downloads folder.
+                      We've sent your comprehensive investment guide to <strong>{email}</strong>.
+                      Please check your inbox (and spam folder) for the email with your PDF attachment.
                     </p>
                   </div>
                   <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-left">
                     <p className="text-sm text-green-800">
-                      <strong>✓ Guide downloaded successfully</strong><br />
-                      <strong>✓ Welcome email sent to {email}</strong><br />
-                      <strong>✓ You're subscribed to market updates</strong>
+                      <strong>✓ Investment Guide sent to {email}</strong><br />
+                      <strong>✓ Professional PDF attachment included</strong><br />
+                      <strong>✓ Welcome email with next steps</strong><br />
+                      <strong>✓ Free consultation offer included</strong>
                     </p>
                   </div>
                   <Button
@@ -785,7 +797,7 @@ export function InvestmentGuide() {
                     }}
                     variant="outline"
                   >
-                    Download Again
+                    Send to Different Email
                   </Button>
                 </motion.div>
               )}

@@ -554,11 +554,16 @@ export default function Home() {
               <div className="flex items-center mb-4">
                 <Logo width={40} height={40} />
               </div>
-              <p className="text-sm text-muted-foreground max-w-md">
+              <p className="text-sm text-muted-foreground max-w-md mb-4">
                 Expert guidance for foreign investors seeking opportunities in Italy&apos;s
                 dynamic market. Backed by decades of international experience and exclusive
                 industry connections.
               </p>
+              <div className="text-sm text-muted-foreground space-y-1">
+                <p className="font-semibold text-foreground">1402 Celsius Ltd</p>
+                <p>Email: <a href="mailto:info@1402celsius.com" className="text-accent hover:underline">info@1402celsius.com</a></p>
+                <p>Phone: <a href="tel:+441696434469" className="text-accent hover:underline">+44 1696 434469</a></p>
+              </div>
             </div>
 
             <div>
@@ -584,11 +589,14 @@ export default function Home() {
 
           <Separator className="my-8" />
 
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-            <p>&copy; 2024 Invest in Italy. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground gap-4">
+            <div className="text-center md:text-left">
+              <p>&copy; 2024 1402 Celsius Ltd. All rights reserved.</p>
+              <p className="text-xs mt-1">Invest in Italy™ is a trademark of 1402 Celsius Ltd.</p>
+            </div>
+            <div className="flex gap-6">
               <Link href="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-accent transition-colors">Terms of Service</Link>
+              <Link href="/terms" className="hover:text-accent transition-colors">Terms of Use</Link>
             </div>
           </div>
         </div>
