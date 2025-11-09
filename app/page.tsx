@@ -91,7 +91,9 @@ export default function Home() {
       <VideoHero
         videoSrc={[
           "https://res.cloudinary.com/dusubfxgo/video/upload/v1753030832/geppix1402_81420_Homepage_concept_for_Apulink.com_a_modern_di_02fb68c3-5806-40b5-984f-f47e14c23456_2_ropt8y.mp4",
-          "https://res.cloudinary.com/dusubfxgo/video/upload/v1753030830/geppix1402_81420_Homepage_concept_for_Apulink.com_a_modern_di_02fb68c3-5806-40b5-984f-f47e14c23456_0_dk65ev.mp4"
+          "https://res.cloudinary.com/dusubfxgo/video/upload/v1753030830/geppix1402_81420_Homepage_concept_for_Apulink.com_a_modern_di_02fb68c3-5806-40b5-984f-f47e14c23456_0_dk65ev.mp4",
+          "https://res.cloudinary.com/dusubfxgo/video/upload/v1759170634/geppix1402_81420_A_small_industrial_plant_in_Puglia_converted_7ac04e16-2aa2-4e4c-9c6a-e88911a57e93_1_sjppvw.mp4",
+          "https://res.cloudinary.com/dusubfxgo/video/upload/v1759170245/geppix1402_81420_Slow_push_through_ancient_stone_archway_into_95363dc1-0272-438a-99ed-d2cadf96052b_0_ylo2wh.mp4"
         ]}
         poster="https://res.cloudinary.com/dusubfxgo/image/upload/v1753030826/geppix1402_81420_Homepage_concept_for_Apulink.com_a_modern_di_8cc82465-1b62-45b5-863f-f8ca2c75318a_0_eorx9g.png"
         title="Invest in Italy"
