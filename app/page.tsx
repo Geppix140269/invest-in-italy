@@ -10,6 +10,7 @@ import { Logo } from "@/components/logo";
 import { VideoHero } from "@/components/video-hero";
 import { ContactForm } from "@/components/contact-form";
 import { NewsletterForm } from "@/components/newsletter-form";
+import { MarketInsights } from "@/components/market-insights";
 import {
   Building2,
   TrendingUp,
@@ -122,6 +123,9 @@ export default function Home() {
           </motion.div>
         </div>
       </AnimatedSection>
+
+      {/* Market Insights Section - Animated Charts */}
+      <MarketInsights />
 
       {/* Services Section - 3D Cards */}
       <section id="services" className="section-padding">
