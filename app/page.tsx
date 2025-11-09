@@ -99,7 +99,7 @@ export default function Home() {
         title="Invest in Italy"
         subtitle="Your Gateway to Italian Investment Opportunities"
         autoPlay={true}
-        loop={true}
+        loop={false}
         showOverlay={true}
         showControls={true}
       />

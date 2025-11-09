@@ -42,31 +42,33 @@ export function VideoHero({
     if (!video || videos.length <= 1) return;
 
     const handleVideoEnd = () => {
+      console.log('Video ended, advancing to next...');
       // Move to next video
-      setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
-
-      // Auto-play next video if we were playing
-      if (isPlaying && video) {
-        setTimeout(() => {
-          video.play().catch(err => console.log('Autoplay prevented:', err));
-        }, 100);
-      }
+      setCurrentVideoIndex((prev) => {
+        const next = (prev + 1) % videos.length;
+        console.log(`Moving from video ${prev} to ${next}`);
+        return next;
+      });
     };
 
     video.addEventListener('ended', handleVideoEnd);
     return () => video.removeEventListener('ended', handleVideoEnd);
-  }, [videos.length, isPlaying]);
+  }, [videos.length]);
 
   // Update video source when index changes
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
+    console.log(`Loading video ${currentVideoIndex}: ${videos[currentVideoIndex]}`);
+    video.src = videos[currentVideoIndex];
     video.load();
-    if (isPlaying) {
-      video.play().catch(err => console.log('Autoplay prevented:', err));
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(err => console.log('Autoplay prevented:', err));
     }
-  }, [currentVideoIndex, isPlaying]);
+  }, [currentVideoIndex, videos]);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -101,10 +103,8 @@ export function VideoHero({
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <video
-          key={currentVideo}
           ref={videoRef}
           className="w-full h-full object-cover"
-          src={currentVideo}
           autoPlay={autoPlay}
           loop={videos.length === 1 ? loop : false}
           muted={isMuted}
@@ -161,7 +161,7 @@ export function VideoHero({
               <Button
                 size="lg"
                 variant="outline"
-                className="text-white border-white/50 hover:bg-white/10 text-lg px-8"
+                className="bg-transparent text-white border-white hover:bg-white hover:text-primary text-lg px-8"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Learn More
