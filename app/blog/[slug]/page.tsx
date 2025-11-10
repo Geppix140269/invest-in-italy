@@ -64,8 +64,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   return {
-    title: `${post.title} | Invest in Italy Blog`,
-    description: post.excerpt || `Read ${post.title} on Invest in Italy`,
+    title: `${post.title} | Capitaly Group Blog`,
+    description: post.excerpt || `Read ${post.title} on Capitaly Group`,
     openGraph: post.mainImage
       ? {
           images: [urlFor(post.mainImage).width(1200).height(630).url()],

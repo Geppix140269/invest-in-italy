@@ -1,0 +1,9 @@
+# Canonical to https://www.capitalygroup.com
+http://capitalygroup.com/*      https://www.capitalygroup.com/:splat  301!
+http://www.capitalygroup.com/*  https://www.capitalygroup.com/:splat  301!
+
+# Legacy domain → Capitaly Group
+https://invest-in-italy.com/*       https://www.capitalygroup.com/:splat  301!
+http://invest-in-italy.com/*        https://www.capitalygroup.com/:splat  301!
+https://www.invest-in-italy.com/*   https://www.capitalygroup.com/:splat  301!
+http://www.invest-in-italy.com/*    https://www.capitalygroup.com/:splat  301!

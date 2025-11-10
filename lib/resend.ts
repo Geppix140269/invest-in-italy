@@ -79,7 +79,7 @@ export const sendWelcomeEmail = async (email: string, firstName: string) => {
     const result = await resend.emails.send({
       from: process.env.EMAIL_FROM!,
       to: email,
-      subject: 'Welcome to Invest in Italy',
+      subject: 'Welcome to Capitaly Group',
       html: `
         <!DOCTYPE html>
         <html>
@@ -95,7 +95,7 @@ export const sendWelcomeEmail = async (email: string, firstName: string) => {
           <body>
             <div class="container">
               <div class="header">
-                <h2>Welcome to Invest in Italy</h2>
+                <h2>Welcome to Capitaly Group</h2>
               </div>
               <div class="content">
                 <p>Dear ${firstName},</p>
@@ -108,7 +108,7 @@ export const sendWelcomeEmail = async (email: string, firstName: string) => {
                   <li>Market Intelligence Reports</li>
                 </ul>
                 <a href="${process.env.NEXT_PUBLIC_SITE_URL}" class="button">Visit Our Website</a>
-                <p>Best regards,<br/>The Invest in Italy Team</p>
+                <p>Best regards,<br/>The Capitaly Group Team</p>
               </div>
             </div>
           </body>

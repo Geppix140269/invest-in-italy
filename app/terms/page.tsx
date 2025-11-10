@@ -35,7 +35,7 @@ export default function TermsOfUse() {
             <section className="glass p-8 rounded-lg">
               <h2 className="text-2xl font-bold mb-4">1. Acceptance of Terms</h2>
               <p>
-                Welcome to Invest in Italy, a trademark of <strong>1402 Celsius Ltd</strong> ("Company", "we", "our", or "us").
+                Welcome to Capitaly Group, a trademark of <strong>1402 Celsius Ltd</strong> ("Company", "we", "our", or "us").
                 By accessing or using our website and services, you agree to be bound by these Terms of Use and our Privacy Policy.
                 If you do not agree to these terms, please do not use our services.
               </p>
@@ -44,7 +44,7 @@ export default function TermsOfUse() {
             <section className="glass p-8 rounded-lg">
               <h2 className="text-2xl font-bold mb-4">2. Description of Services</h2>
               <p>
-                Invest in Italy provides information, guidance, and advisory services related to investment opportunities
+                Capitaly Group provides information, guidance, and advisory services related to investment opportunities
                 in Italy, including but not limited to:
               </p>
               <ul className="list-disc pl-6 space-y-2 mt-4">
@@ -97,7 +97,7 @@ export default function TermsOfUse() {
                 copyright, trademark, and other intellectual property laws.
               </p>
               <p className="mt-4">
-                <strong>Invest in Italy</strong> is a registered trademark of 1402 Celsius Ltd. Unauthorized use of
+                <strong>Capitaly Group</strong> is a registered trademark of 1402 Celsius Ltd. Unauthorized use of
                 this trademark is strictly prohibited.
               </p>
               <p className="mt-4">
@@ -261,7 +261,7 @@ export default function TermsOfUse() {
               </p>
               <div className="mt-4 p-4 bg-accent/10 rounded-lg">
                 <p className="font-semibold">1402 Celsius Ltd</p>
-                <p className="mt-2">Trading as: Invest in Italy™</p>
+                <p className="mt-2">Trading as: Capitaly Group™</p>
                 <p className="mt-2">Email: <a href="mailto:info@1402celsius.com" className="text-accent hover:underline">info@1402celsius.com</a></p>
                 <p>Phone: <a href="tel:+441696434469" className="text-accent hover:underline">+44 1696 434469</a></p>
               </div>

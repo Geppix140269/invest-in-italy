@@ -35,7 +35,7 @@ export default function PrivacyPolicy() {
             <section className="glass p-8 rounded-lg">
               <h2 className="text-2xl font-bold mb-4">1. Introduction</h2>
               <p>
-                Invest in Italy is a trademark of <strong>1402 Celsius Ltd</strong> ("we", "our", or "us").
+                Capitaly Group is a trademark of <strong>1402 Celsius Ltd</strong> ("we", "our", or "us").
                 We are committed to protecting your privacy and handling your data in an open and transparent manner.
                 This privacy policy explains how we collect, use, and protect your personal information when you use
                 our website and services.

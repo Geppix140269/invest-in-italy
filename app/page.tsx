@@ -99,8 +99,8 @@ export default function Home() {
           "https://res.cloudinary.com/dusubfxgo/video/upload/v1759170245/geppix1402_81420_Slow_push_through_ancient_stone_archway_into_95363dc1-0272-438a-99ed-d2cadf96052b_0_ylo2wh.mp4"
         ]}
         poster="https://res.cloudinary.com/dusubfxgo/image/upload/v1753030826/geppix1402_81420_Homepage_concept_for_Apulink.com_a_modern_di_8cc82465-1b62-45b5-863f-f8ca2c75318a_0_eorx9g.png"
-        title="Invest in Italy"
-        subtitle="Your Gateway to Italian Investment Opportunities"
+        title="Capitaly Group"
+        subtitle="Advisors and Partners for Strategic Investments in Italy"
         autoPlay={true}
         loop={false}
         showOverlay={true}
@@ -560,9 +560,7 @@ export default function Home() {
                 <Logo width={40} height={40} />
               </div>
               <p className="text-sm text-muted-foreground max-w-md mb-4">
-                Expert guidance for foreign investors seeking opportunities in Italy&apos;s
-                dynamic market. Backed by decades of international experience and exclusive
-                industry connections.
+                Advisors and partners for strategic investments in Italy. We originate, structure, and execute high-quality deals across hospitality, energy, data infrastructure, and manufacturing—combining financial rigor with on-the-ground execution.
               </p>
               <div className="text-sm text-muted-foreground space-y-1">
                 <p className="font-semibold text-foreground">1402 Celsius Ltd</p>
@@ -597,7 +595,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground gap-4">
             <div className="text-center md:text-left">
               <p>&copy; 2024 1402 Celsius Ltd. All rights reserved.</p>
-              <p className="text-xs mt-1">Invest in Italy™ is a trademark of 1402 Celsius Ltd.</p>
+              <p className="text-xs mt-1">Capitaly Group™ is a trademark of 1402 Celsius Ltd.</p>
             </div>
             <div className="flex gap-6">
               <Link href="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>

@@ -19,6 +19,6 @@
   <rect x="320" y="265" width="20" height="100" fill="#CE2B37" rx="2"/>
 
   <!-- Text -->
-  <text x="500" y="300" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="#FFFFFF">Invest in Italy</text>
-  <text x="500" y="380" font-family="Arial, sans-serif" font-size="40" fill="#DAA520">Expert Italian Investment Advisory</text>
+  <text x="500" y="300" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="#FFFFFF">Capitaly Group</text>
+  <text x="500" y="380" font-family="Arial, sans-serif" font-size="36" fill="#DAA520">Advisors and Partners for Strategic Investments in Italy</text>
 </svg>
