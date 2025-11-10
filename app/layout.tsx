@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description: 'We help international investors originate, structure, and execute high-quality deals in Italy—combining financial rigor with local execution.',
     images: [
       {
-        url: '/images/og-image.svg',
+        url: '/images/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Capitaly Group',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Capitaly Group - Advisors and Partners for Strategic Investments in Italy',
     description: 'We help international investors originate, structure, and execute high-quality deals in Italy.',
-    images: ['/images/og-image.svg'],
+    images: ['/images/og-image.png'],
   },
 };
 
