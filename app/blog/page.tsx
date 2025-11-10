@@ -9,7 +9,7 @@ import { Navigation } from '@/components/navigation';
 import { Calendar, User } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Blog - Italian Investment Insights | Invest in Italy',
+  title: 'Blog - Italian Investment Insights | Capitaly Group',
   description: 'Expert insights on Italian real estate, tax benefits, business opportunities, and investment strategies. Stay updated with the latest trends in Italian investment.',
 };
 
@@ -156,7 +156,7 @@ export default async function BlogPage() {
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-display text-4xl font-bold mb-6">
-            Ready to Invest in Italy?
+            Ready to Get Started?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Schedule a consultation with our team to explore personalized investment opportunities

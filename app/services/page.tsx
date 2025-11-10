@@ -403,7 +403,7 @@ export default function ServicesPage() {
       <section id="contact" className="section-padding">
         <div className="container-elegant">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="heading-section mb-6">Ready to Invest in Italy?</h2>
+            <h2 className="heading-section mb-6">Ready to Get Started?</h2>
             <p className="prose-elegant mb-8">
               Schedule a complimentary consultation to discuss your investment goals
               and explore opportunities tailored to your objectives.
@@ -424,7 +424,7 @@ export default function ServicesPage() {
             <Logo width={40} height={40} />
           </div>
           <p className="text-sm text-muted-foreground">
-            &copy; 2024 Invest in Italy. All rights reserved.
+            &copy; 2024 Capitaly Group. All rights reserved.
           </p>
         </div>
       </footer>

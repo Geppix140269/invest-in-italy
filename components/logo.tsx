@@ -20,8 +20,8 @@ export function Logo({
   return (
     <Link href="/" className={cn("flex items-center gap-3", className)}>
       <Image
-        src="/images/logo.svg"
-        alt="Invest in Italy"
+        src="/brand/capitaly-group.svg"
+        alt="Capitaly Group"
         width={width}
         height={height}
         className={cn("object-contain", imageClassName)}
@@ -29,7 +29,7 @@ export function Logo({
       />
       {showText && (
         <span className="font-display text-xl font-semibold">
-          Invest in Italy
+          Capitaly Group
         </span>
       )}
     </Link>

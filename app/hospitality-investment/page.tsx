@@ -572,7 +572,7 @@ export default function HospitalityInvestmentPage() {
             <Logo width={40} height={40} />
           </div>
           <p className="text-sm text-muted-foreground">
-            &copy; 2024 Invest in Italy. All rights reserved.
+            &copy; 2024 Capitaly Group. All rights reserved.
           </p>
         </div>
       </footer>

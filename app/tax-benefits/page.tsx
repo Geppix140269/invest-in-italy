@@ -624,7 +624,7 @@ export default function TaxBenefitsPage() {
             <Logo width={40} height={40} />
           </div>
           <p className="text-sm text-muted-foreground">
-            &copy; 2025 Invest in Italy. All rights reserved.
+            &copy; 2025 Capitaly Group. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground mt-2">
             Information updated for 2025 tax year. Consult professionals for current rates and eligibility.

@@ -20,8 +20,8 @@ interface VideoHeroProps {
 export function VideoHero({
   videoSrc,
   poster,
-  title = "Invest in Italy",
-  subtitle = "Your Gateway to Italian Investment Opportunities",
+  title = "Capitaly Group",
+  subtitle = "Advisors and Partners for Strategic Investments in Italy",
   showControls = true,
   autoPlay = true,
   loop = true,

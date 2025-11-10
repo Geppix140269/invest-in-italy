@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Invest in Italy - Expert Italian Investment Advisory",
-  description: "Premium investment advisory services for foreign investors. Expert guidance on Italian real estate, business acquisitions, tax benefits, and hospitality investments from international executives.",
+  title: "Capitaly Group - Advisors and Partners for Strategic Investments in Italy",
+  description: "We help international investors originate, structure, and execute high-quality deals in Italy—combining financial rigor with local execution across hospitality, energy, data infrastructure, and manufacturing.",
   icons: {
     icon: [
       { url: '/favicons/favicon-16x16.svg', sizes: '16x16', type: 'image/svg+xml' },
@@ -28,26 +28,30 @@ export const metadata: Metadata = {
       { url: '/favicons/apple-touch-icon.svg', sizes: '180x180', type: 'image/svg+xml' },
     ],
   },
+  metadataBase: new URL('https://www.capitalygroup.com'),
+  alternates: {
+    canonical: 'https://www.capitalygroup.com',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://invest-in-italy.com',
-    siteName: 'Invest in Italy',
-    title: 'Invest in Italy - Expert Italian Investment Advisory',
-    description: 'Premium investment advisory services for foreign investors. Expert guidance on Italian real estate, business acquisitions, tax benefits, and hospitality investments.',
+    url: 'https://www.capitalygroup.com',
+    siteName: 'Capitaly Group',
+    title: 'Capitaly Group - Advisors and Partners for Strategic Investments in Italy',
+    description: 'We help international investors originate, structure, and execute high-quality deals in Italy—combining financial rigor with local execution.',
     images: [
       {
         url: '/images/og-image.svg',
         width: 1200,
         height: 630,
-        alt: 'Invest in Italy',
+        alt: 'Capitaly Group',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Invest in Italy - Expert Italian Investment Advisory',
-    description: 'Premium investment advisory services for foreign investors.',
+    title: 'Capitaly Group - Advisors and Partners for Strategic Investments in Italy',
+    description: 'We help international investors originate, structure, and execute high-quality deals in Italy.',
     images: ['/images/og-image.svg'],
   },
 };
@@ -57,8 +61,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Capitaly Group',
+    url: 'https://www.capitalygroup.com',
+    logo: 'https://www.capitalygroup.com/brand/capitaly-group.svg',
+    sameAs: []
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
