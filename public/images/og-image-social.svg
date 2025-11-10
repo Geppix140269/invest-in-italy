@@ -1,0 +1,47 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#003366;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#005599;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="150" cy="500" r="80" fill="#FFFFFF" opacity="0.05"/>
+  <circle cx="1050" cy="150" r="120" fill="#FFFFFF" opacity="0.05"/>
+  <circle cx="950" cy="550" r="60" fill="#DAA520" opacity="0.1"/>
+
+  <!-- Main content container -->
+  <g filter="url(#shadow)">
+    <!-- Italian flag accent -->
+    <rect x="100" y="200" width="8" height="230" fill="#009246" rx="4"/>
+    <rect x="115" y="200" width="8" height="230" fill="#FFFFFF" rx="4"/>
+    <rect x="130" y="200" width="8" height="230" fill="#CE2B37" rx="4"/>
+
+    <!-- Brand name -->
+    <text x="180" y="310" font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+          font-size="90" font-weight="700" fill="#FFFFFF" letter-spacing="-2">
+      CAPITALY GROUP
+    </text>
+
+    <!-- Tagline -->
+    <text x="180" y="380" font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+          font-size="32" font-weight="400" fill="#DAA520" letter-spacing="0.5">
+      Advisors and Partners for Strategic
+    </text>
+    <text x="180" y="420" font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+          font-size="32" font-weight="400" fill="#DAA520" letter-spacing="0.5">
+      Investments in Italy
+    </text>
+  </g>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="600" width="1200" height="30" fill="#DAA520" opacity="0.3"/>
+</svg>
