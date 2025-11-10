@@ -60,7 +60,7 @@ Ultra-professional corporate banner design, "CAPITALY GROUP" in bold geometric s
 
 ### Better Prompt for Text-Free Version
 ```
-Elegant abstract corporate background for investment advisory, deep navy blue gradient (#003366), flowing gold (#DAA520) geometric shapes, subtle Italian flag colors (green white red) as accent, modern minimal design, professional finance aesthetic, luxury branding background, clean composition, negative space for text overlay --ar 1200:630 --style raw --v 6 --no text --no letters
+Elegant abstract corporate background for investment advisory, deep navy blue gradient (#003366), flowing gold (#DAA520) geometric shapes, subtle Italian flag colors (green white red) as accent, modern minimal design, professional finance aesthetic, luxury branding background, clean composition, negative space for text overlay --ar 1200:630 --style raw --v 6
 ```
 
 Then add your text in:
