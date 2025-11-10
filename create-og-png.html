@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create OG Image PNG</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+        #ogImage {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .content {
+            z-index: 1;
+        }
+        .title {
+            font-size: 88px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 0 0 20px 0;
+            letter-spacing: -1px;
+        }
+        .subtitle {
+            font-size: 36px;
+            font-weight: 400;
+            color: #DAA520;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .circle1 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+            top: -50px;
+            left: -50px;
+        }
+        .circle2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+            bottom: -100px;
+            right: -100px;
+        }
+        .accent {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: rgba(218,165,32,0.2);
+        }
+        .instructions {
+            background: white;
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .instructions h2 {
+            margin-top: 0;
+            color: #003366;
+        }
+        .step {
+            background: #f8f8f8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #003366;
+        }
+        button {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #004d99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="ogImage">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="content">
+                <h1 class="title">Capitaly Group</h1>
+                <p class="subtitle">
+                    Advisors and Partners for Strategic<br>
+                    Investments in Italy
+                </p>
+            </div>
+            <div class="accent"></div>
+        </div>
+
+        <div class="instructions">
+            <h2>📸 Create PNG for WhatsApp/Social Media</h2>
+
+            <div class="step">
+                <strong>Method 1: Browser Screenshot (Easiest)</strong>
+                <ol>
+                    <li>Right-click on the image above</li>
+                    <li>Select "Inspect" or "Inspect Element"</li>
+                    <li>In DevTools, right-click on the <code>&lt;div id="ogImage"&gt;</code> element</li>
+                    <li>Select "Capture node screenshot"</li>
+                    <li>Save as <code>og-image.png</code> in <code>public/images/</code></li>
+                </ol>
+            </div>
+
+            <div class="step">
+                <strong>Method 2: Windows Snipping Tool</strong>
+                <ol>
+                    <li>Press <kbd>Windows Key + Shift + S</kbd></li>
+                    <li>Select the exact image area above (1200x630)</li>
+                    <li>Save as <code>og-image.png</code></li>
+                    <li>Move to <code>public/images/</code></li>
+                </ol>
+            </div>
+
+            <div class="step">
+                <strong>Method 3: Online Converter</strong>
+                <ol>
+                    <li>Go to <a href="https://cloudconvert.com/svg-to-png" target="_blank">CloudConvert.com</a></li>
+                    <li>Upload <code>public/images/og-image.svg</code></li>
+                    <li>Set width to 1200px</li>
+                    <li>Download as PNG</li>
+                    <li>Save to <code>public/images/og-image.png</code></li>
+                </ol>
+            </div>
+
+            <h3>After Creating PNG:</h3>
+            <ol>
+                <li>Save file as <code>public/images/og-image.png</code></li>
+                <li>Update <code>app/layout.tsx</code> lines 44 and 55:
+                    <pre style="background: #f5f5f5; padding: 10px; border-radius: 5px;">url: '/images/og-image.png',  // Changed from .svg</pre>
+                </li>
+                <li>Commit and push:
+                    <pre style="background: #f5f5f5; padding: 10px; border-radius: 5px;">git add public/images/og-image.png app/layout.tsx
+git commit -m "feat: add PNG OG image for WhatsApp compatibility"
+git push origin main</pre>
+                </li>
+                <li>Wait 5 minutes for deployment</li>
+                <li>Test on WhatsApp!</li>
+            </ol>
+
+            <button onclick="window.print()">🖨️ Print to PDF</button>
+            <button onclick="alert('Right-click the image above and select \'Inspect\' then right-click the div element and choose \'Capture node screenshot\'')">❓ Show Quick Instructions</button>
+        </div>
+    </div>
+
+    <script>
+        console.log('OG Image Generator');
+        console.log('Image size: 1200x630px');
+        console.log('Perfect for WhatsApp, Facebook, LinkedIn, Twitter');
+    </script>
+</body>
+</html>
